@@ -17,7 +17,7 @@ Knife-Zeroは[Chef](https://www.chef.io/)のプラグインです。特徴はだ
 まずKnife-Zeroは[Knife-Solo](http://matschaffer.github.io/knife-solo/)の乗り換え先ではありません。
 Knife-ZeroはChef-Server/Client環境のサブセットであるローカルモードに、対象をリモートにできる機能を追加します。
 
-とりあえず日本語情報は[リンク集]({{ site.baseurl }}/50_tips_index/#Links)を。
+とりあえず日本語情報は[リンク集]({{ site.baseurl }}/50_tips_index-ja/#Links)を。
 
 {% comment %}
 <div class="posts">
