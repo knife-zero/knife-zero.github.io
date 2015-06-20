@@ -3,7 +3,13 @@ layout: default
 title: Home
 ---
 
-Ohai Knife-Zero.
+## Knife-Plugin Zero
+
+- It doesn't have to transport cookbooks via scp,rsync or something.
+- It can collect node object into local chef-repo.
+- It supports all functions of chef(C/S).
+- You have only to manage one chef-repo.
+
 
 <div class="posts">
   {% for post in paginator.posts %}
@@ -21,6 +27,7 @@ Ohai Knife-Zero.
   {% endfor %}
 </div>
 
+{% comment %}
 <div class="pagination">
   {% if paginator.next_page %}
     <a class="pagination-item older" href="/page{{paginator.next_page}}">Older</a>
@@ -37,3 +44,4 @@ Ohai Knife-Zero.
     <span class="pagination-item newer">Newer</span>
   {% endif %}
 </div>
+{% endcomment %}
