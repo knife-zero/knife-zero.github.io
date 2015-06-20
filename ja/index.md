@@ -4,7 +4,9 @@ title: Home(ja)
 pamalink: ja/index.html
 ---
 
-よう。
+# Knife-Plugin Zero
+
+よう、Knife-Zeroをつかおうとしてるんだね。
 
 <div class="posts">
   {% for post in paginator.posts %}
@@ -22,6 +24,7 @@ pamalink: ja/index.html
   {% endfor %}
 </div>
 
+{% comment %}
 <div class="pagination">
   {% if paginator.next_page %}
     <a class="pagination-item older" href="/page{{paginator.next_page}}">Older</a>
@@ -38,3 +41,4 @@ pamalink: ja/index.html
     <span class="pagination-item newer">Newer</span>
   {% endif %}
 </div>
+{% endcomment %}
