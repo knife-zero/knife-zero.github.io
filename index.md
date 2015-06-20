@@ -3,13 +3,15 @@ layout: default
 title: Home
 ---
 
-## Knife-Plugin Zero
+# Knife-Plugin Zero
 
 - It doesn't have to transport cookbooks via scp,rsync or something.
 - It can collect node object into local chef-repo.
 - It supports all functions of chef(C/S).
 - You have only to manage one chef-repo.
 
+
+## Introduction
 
 <div class="posts">
   {% for post in paginator.posts %}
