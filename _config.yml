@@ -1,5 +1,5 @@
 ---
-baseurl: "/knife-zero"
+baseurl: /knife-zero
 
 # Dependencies
 markdown:         redcarpet
