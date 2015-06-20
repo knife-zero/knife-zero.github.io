@@ -1,3 +1,6 @@
+---
+baseurl: "/knife-zero"
+
 # Dependencies
 markdown:         redcarpet
 pygments:         true
