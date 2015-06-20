@@ -1,9 +1,10 @@
 ---
-layout: default
-title: Home
+layout: default-ja
+title: Home(ja)
+pamalink: ja/index.html
 ---
 
-Ohai Knife-Zero.
+よう。
 
 <div class="posts">
   {% for post in paginator.posts %}
