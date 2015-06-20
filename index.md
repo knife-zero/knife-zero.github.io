@@ -12,6 +12,7 @@ Knife-Zero is plugin of [Chef](https://www.chef.io/).
 - It can collect node object into local chef-repo.
 - It supports all functions of chef(C/S).
     - such as serach, edit node, etc...
+    - except enterprise addons.
 - You have only to manage one chef-repo.
 
 

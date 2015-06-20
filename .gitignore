@@ -46,6 +46,7 @@ Session.vim
 .netrwhist
 *~
 
+/bin/
 _site/
 .envrc
 /nodes/
