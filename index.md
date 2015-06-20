@@ -19,7 +19,11 @@ Knife-Zero is plugin for [Chef](https://www.chef.io/).
 ## Introduction
 
 First, Knife-Zero is not replacement of [Knife-Solo](http://matschaffer.github.io/knife-solo/).
+Knife-Zero adds the function which can do a target remotely to the local_mode which is a subset of the Chef-Server/Client environment.
 
+It may be used before introduction of Chef-Server, or you may manage like Knife-Solo. Even if use with whitelist, you can manage Node objects in Git.
+
+{% comment %}
 <div class="posts">
   {% for post in paginator.posts %}
   <div class="post">
@@ -35,6 +39,7 @@ First, Knife-Zero is not replacement of [Knife-Solo](http://matschaffer.github.i
   </div>
   {% endfor %}
 </div>
+{% endcomment %}
 
 {% comment %}
 <div class="pagination">
