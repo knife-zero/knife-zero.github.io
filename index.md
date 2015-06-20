@@ -8,12 +8,16 @@ title: Home
 Knife-Zero is plugin of [Chef](https://www.chef.io/).
 
 - It doesn't have to transport cookbooks via scp,rsync or something.
+    - uses HTTP like Chef-Server/Client, via ssh port forwarding.
 - It can collect node object into local chef-repo.
 - It supports all functions of chef(C/S).
+    - such as serach, edit node, etc...
 - You have only to manage one chef-repo.
 
 
 ## Introduction
+
+First, Knife-Zero is not replacement of [Knife-Solo](http://matschaffer.github.io/knife-solo/).
 
 <div class="posts">
   {% for post in paginator.posts %}

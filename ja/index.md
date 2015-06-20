@@ -6,12 +6,20 @@ pamalink: ja/index.html
 
 # Knife-Plugin Zero
 
-Knife-Zeroは[Chef](https://www.chef.io/)のプラグインです。
+Knife-Zeroは[Chef](https://www.chef.io/)のプラグインです。特徴はだいたい次のとおり。
 
+- SSHポートフォワードでChef-Zeroに接続して、必要なCookbookだけ転送します。
+- Nodeオブジェクトをローカル保存します。
+- Chef-Server/Client環境の機能をつかえます。
 
 ## Introduction
 
+まずKnife-Zeroは[Knife-Solo](http://matschaffer.github.io/knife-solo/)の乗り換え先ではありません。
+Knife-ZeroはChef-Server/Client環境のサブセットであるローカルモードに、対象をリモートにできる機能を追加します。
 
+とりあえず日本語情報は[リンク集]({{ site.baseurl }}50_tips_index/#Links)を。
+
+{% comment %}
 <div class="posts">
   {% for post in paginator.posts %}
   <div class="post">
@@ -27,6 +35,7 @@ Knife-Zeroは[Chef](https://www.chef.io/)のプラグインです。
   </div>
   {% endfor %}
 </div>
+{% endcomment %}
 
 {% comment %}
 <div class="pagination">
