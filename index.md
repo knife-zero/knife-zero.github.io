@@ -5,7 +5,7 @@ title: Home
 
 # Knife-Plugin Zero
 
-Knife-Zero is plugin of [Chef](https://www.chef.io/).
+Knife-Zero is plugin for [Chef](https://www.chef.io/).
 
 - It doesn't have to transport cookbooks via scp,rsync or something.
     - uses HTTP like Chef-Server/Client, via ssh port forwarding.
