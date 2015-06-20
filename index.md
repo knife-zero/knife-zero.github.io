@@ -5,6 +5,8 @@ title: Home
 
 # Knife-Plugin Zero
 
+Knife-Zero is plugin of [Chef](https://www.chef.io/).
+
 - It doesn't have to transport cookbooks via scp,rsync or something.
 - It can collect node object into local chef-repo.
 - It supports all functions of chef(C/S).

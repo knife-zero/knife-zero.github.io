@@ -6,7 +6,11 @@ pamalink: ja/index.html
 
 # Knife-Plugin Zero
 
-よう、Knife-Zeroをつかおうとしてるんだね。
+Knife-Zeroは[Chef](https://www.chef.io/)のプラグインです。
+
+
+## Introduction
+
 
 <div class="posts">
   {% for post in paginator.posts %}
