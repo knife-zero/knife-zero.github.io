@@ -1,6 +1,6 @@
 ---
-layout: page
-lang: en
+layout: page-ja
+lang: ja
 title: Subcommands
 ---
 

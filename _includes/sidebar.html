@@ -20,9 +20,17 @@
         {% if node.title != null %}
           {% if node.layout == "page" %}
             {% if node.lang == "en" %}
-            <li class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}">
-              <a href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a>
-            </li>
+              <li class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}">
+                <a href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a>
+              </li>
+              {% if page.title == "Subcommands" and node.title == "Subcommands" %}
+                <li class="sidebar-nav-item">
+                  &nbsp;
+                  <a href="#bootstrap">bootstrap</a>
+                  <a href="#converge">converge</a>
+                  <a href="#diagnose">diagnose</a>
+                </li>
+              {% endif %}
             {% endif %}
           {% endif %}
         {% endif %}

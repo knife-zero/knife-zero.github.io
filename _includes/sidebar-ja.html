@@ -1,7 +1,7 @@
 <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <h1>{{ site.title }}</h1>
+      <h1>{{ site.title }} Japan</h1>
       <p class="lead">{{ site.description }}</p>
     </div>
 
@@ -20,9 +20,17 @@
         {% if node.title != null %}
           {% if node.layout == "page-ja" %}
             {% if node.lang == "ja" %}
-            <li class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}">
-              <a href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a>
-            </li>
+              <li class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}">
+                <a href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a>
+              </li>
+              {% if page.title == "Subcommands" and node.title == "Subcommands" %}
+                <li class="sidebar-nav-item">
+                  &nbsp;
+                  <a href="#bootstrap">bootstrap</a>
+                  <a href="#converge">converge</a>
+                  <a href="#diagnose">diagnose</a>
+                </li>
+              {% endif %}
             {% endif %}
           {% endif %}
         {% endif %}

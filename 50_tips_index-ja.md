@@ -1,14 +1,14 @@
 ---
 layout: page-ja
 lang: ja
-title: Tips and Links(Ja)
+title: Tips and Links
 ---
 
 - 参考ワークフロー。
 - Nodeの管理。
 - Vagrantでよくある質問。
 
-## Links
+## [Links](#LInks)
 
 自分で書いたKnife-Zeroの話。
 

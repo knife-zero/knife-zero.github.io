@@ -1,7 +1,7 @@
 ---
 layout: page-ja
 lang: ja
-title: Getting Started(Ja)
+title: Getting Started
 ---
 
 ## Getting Started with knife-zero.
