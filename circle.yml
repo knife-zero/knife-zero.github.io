@@ -1,0 +1,19 @@
+---
+general:
+  branches:
+    ignore:
+      - gh-pages
+machine:
+  ruby:
+    version: 2.1.5
+  services:
+    - docker
+test:
+  override:
+    - bundle exec ruby test/run_test.rb -v
+deployment:
+  integration:
+    branch: integration_testedge
+    commands:
+      - docker build -t local/knife-zero .
+      - docker run -it local/knife-zero sh run.sh
