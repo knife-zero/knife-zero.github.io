@@ -4,9 +4,16 @@ lang: en
 title: Tips and Links
 ---
 
-- Workflow Example.
-- Managing Nodes.
-- Work with Vagrant.
+{% assign pages_list = site.pages %}
+{% for node in pages_list %}
+  {% if node.title != null %}
+    {% if node.layout == "tips" %}
+      {% if node.lang == "en" %}
+- [{{ node.title }}]({{site.baseurl}}{{ node.url }})
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
 
 ## [Links](#LInks)
 
