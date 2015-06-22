@@ -23,6 +23,13 @@ Chef-Serverの導入前につかってもよいし、Knife-Soloのように管�
 
 とりあえず日本語情報は[リンク集]({{ site.baseurl }}/50_tips_index-ja/#Links)を。
 
+> あと、Chef-ZeroとKnife-Zeroは別モンです。混同注意。
+> 
+> - Chef-Zero: Chef社の軽量Chef-Server
+> 
+> - Knife-Zero: ユーザが作ったChef-ZeroをSSH越しに使うプラグイン
+
+
 ## Knife-Zeroのワークフロー
 
 Knife-Zeroの使い方はほとんどChef-Server/Client環境の管理と変わりません。たいていは公式のドキュメントの解説が参考になるはずです。
