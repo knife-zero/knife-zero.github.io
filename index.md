@@ -56,7 +56,7 @@ When you'd like also to manage a Node object by VCS(such as Git), use WhiteList.
 ## Which tool should I use?
 
 If you didn't have any nodes yet. And you'd like to manage there lifecycle as Code.  You can consider the [chef-provisioning](https://docs.chef.io/provisioning.html).
-`chef-provisioning` manages provisioning and updating ,disposing of nodes (Transfer of Chef-Repo is similar to Knife-Solo). 
+`chef-provisioning` manages provisioning and updating ,disposing of nodes (Transfer of Chef-Repo is similar to Knife-Solo).
 And, `zero converge` of Knife-Zero can also be used in a updating of Nodes which are managed under `chef-provisioning`.
 
 When it's existence or Node is provisioned by other tools, Knife-Zero is convenient. If local search is unnecessary, [Knife-Solo](http://matschaffer.github.io/knife-solo/) can also be chosen.
