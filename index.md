@@ -24,6 +24,48 @@ Knife-Zero adds the function which can do a target remotely to the local_mode wh
 
 It may be used before introduction of Chef-Server, or you may manage like Knife-Solo. Even if use with whitelist, you can manage Node objects in Git.
 
+## Work with Knife-Zero
+
+The how to use Knife-Zero is hardly different from management of the Chef-Server/Client environment. Explanation of an official document should almost be helpful.
+
+- [All about Chef ... — Chef Docs](http://docs.chef.io/ "All about Chef ... — Chef Docs")
+
+There are 2 main commands this plug-in offers.
+
+`zero bootstrap` installs chef-client to remote Node. This subcommand based on `knife bootstrap`.
+
+- [knife bootstrap — Chef Docs](https://docs.chef.io/knife_bootstrap.html "knife bootstrap — Chef Docs")
+
+`zero converge` updates Nodes which already managed. This subcommand based on `knife ssh`.
+The `QUERY` used for choice of a node uses the search function of Chef. Please see about `knife search`.
+
+
+- [knife ssh — Chef Docs](https://docs.chef.io/knife_ssh.html "knife ssh — Chef Docs")
+- [knife search — Chef Docs](https://docs.chef.io/knife_search.html "knife search — Chef Docs")
+
+Management of Node uses these 2 commands basically.
+
+
+### You can include Node Object to version control system.
+
+When I'd like also to manage a Node object for Git, I'd hope that you use WhiteList. It's written in Tips for more information.
+
+When you'd like also to manage a Node object by VCS(such as Git), use WhiteList. See Tips.
+
+
+## Which tool should I use?
+
+If you didn't have any nodes yet. And you'd like to manage there lifecycle as Code.  You can consider the [chef-provisioning](https://docs.chef.io/provisioning.html).
+`chef-provisioning` manages provisioning and updating ,disposing of nodes (Transfer of Chef-Repo is similar to Knife-Solo). 
+And, `zero converge` of Knife-Zero can also be used in a updating of Nodes which are managed under `chef-provisioning`.
+
+When it's existence or Node is provisioned by other tools, Knife-Zero is convenient. If local search is unnecessary, [Knife-Solo](http://matschaffer.github.io/knife-solo/) can also be chosen.
+
+If you seem to hard about learning chef but love Ruby, You can consider the [Itamae](http://itamae.kitchen/).
+
+Well, you can try Knife-Zero [Getting Started](/knife-zero/20_getting_started/).
+
+
 {% comment %}
 <div class="posts">
   {% for post in paginator.posts %}
