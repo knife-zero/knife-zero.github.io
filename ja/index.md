@@ -61,6 +61,7 @@ NodeオブジェクトもGit等で管理したければ、WhiteListを使うと�
 
 ChefはしんどいけどRubyがいいなら[Itamae](http://itamae.kitchen/)もいいですよ。
 
+まあ、[Getting Started](/knife-zero/20_getting_started-ja/)でやってみましょうか。
 
 {% comment %}
 <div class="posts">
