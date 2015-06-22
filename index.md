@@ -14,6 +14,7 @@ Knife-Zero is plugin for [Chef](https://www.chef.io/).
     - such as serach, edit node, etc...
     - except enterprise addons.
 - You have only to manage one chef-repo.
+- Windows Server(Target) is not supported.
 
 
 ## Introduction
