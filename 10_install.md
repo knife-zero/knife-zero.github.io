@@ -4,6 +4,21 @@ lang: en
 title: Installation
 ---
 
+## Knife-Zeroなど、Chefのプラグインインストール方法について
+
+私見です。  
+あなたがRubyのプログラムも作る場合は、他のプロジェクトと同様にRubyのバージョンマネージャ(rvm, rbenv)と組み合わせながらBundlerを使いましょう。
+
+Rubyの管理が不要、または共同で作業用のサーバを用意する場合はChef-DKがいいと思います。
+
+## About plugin installation method of Chef. For example, such as Knife-Zero.
+
+IMHO,  
+If you make a program of Ruby, I recommend using Bundler while combining with a version manager of Ruby (rvm, rbenv) like other projects.
+
+Next, if you are not required Ruby management, and you want to use the co-workstation server. In this case, I recommend using Chef-DK.
+
+
 ## Install with Chef-DK
 
 Install via `chef gem` subcommand.

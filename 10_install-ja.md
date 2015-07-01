@@ -4,6 +4,14 @@ lang: ja
 title: Installation
 ---
 
+## Knife-Zeroなど、Chefのプラグインインストール方法について
+
+私見です。  
+あなたがRubyのプログラムも作る場合は、他のプロジェクトと同様にRubyのバージョンマネージャ(rvm, rbenv)と組み合わせながらBundlerを使いましょう。
+
+Rubyの管理が不要、または共同で作業用のサーバを用意する場合はChef-DKがいいと思います。
+
+
 ## Chef-DKに追加する場合
 
 `chef gem`コマンドを使いましょう。
