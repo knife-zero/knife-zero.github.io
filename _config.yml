@@ -14,6 +14,9 @@ tagline:          'Local Mode via SSH.'
 description:      'Run chef-client at remote node with chef-zero(local-mode) via HTTP over SSH port fowarding. '
 url:              https://github.com/higanworks/knife-zero
 
+gems:
+  - jekyll-sitemap
+
 author:
   name:           'SAWANOBORI Yukihiko'
   url:            https://github.com/sawanoboly
