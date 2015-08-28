@@ -1,5 +1,5 @@
 ---
-baseurl: /knife-zero
+baseurl: /
 
 # Dependencies
 markdown:         redcarpet
@@ -12,7 +12,7 @@ permalink:        pretty
 title:            Knife-Zero
 tagline:          'Local Mode via SSH.'
 description:      'Run chef-client at remote node with chef-zero(local-mode) via HTTP over SSH port fowarding. '
-url:              http://higanworks.com
+url:              https://knife-zero.github.io
 
 gems:
   - jekyll-sitemap
@@ -24,7 +24,7 @@ author:
 paginate:         5
 
 # Custom vars
-version:          1.7.x
+version:          1.8.x
 
 github:
   repo:  https://github.com/higanworks/knife-zero
