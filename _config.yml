@@ -1,9 +1,9 @@
 ---
-baseurl: /
+baseurl: ""
 
 # Dependencies
 markdown:         redcarpet
-pygments:         true
+highlighter:      true
 
 # Permalinks
 permalink:        pretty
