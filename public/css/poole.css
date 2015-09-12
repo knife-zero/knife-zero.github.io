@@ -304,6 +304,16 @@ tbody tr:nth-child(odd) th {
 .post {
   margin-bottom: 4em;
 }
+@media (min-width: 48rem) {
+  .page {
+    font-size: 16px;
+  }
+}
+@media (min-width: 58rem) {
+  .page {
+    font-size: 18px;
+  }
+}
 
 /* Blog post or page title */
 .page-title,
