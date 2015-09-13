@@ -44,12 +44,12 @@ Knife-Zeroで追加したオプションと、よく聞かれるオプション�
     - Bootstrap時に実行するレシピのランリストです。
 - `--sudo` (ChefCore)
     - リモートNodeでChef-Clientの実行にsudoを使います。
-- `-W, --why-run` (ChefCore)
+- `-W, --why-run`
     - Chef-Clientの実行をWhy-Runモードで行います。
     - Chefのインストール、設定変更までは実際に行われます。
 
 
-その他については`--help`を参照してください。
+その他については`knife zero bootstrap --help`を参照してください。
 
 
 ### Examples
@@ -119,7 +119,7 @@ Knife-Zeroで追加したオプションと、よく聞かれるオプション�
 - `--remote-chef-zero-port`
     - リモートNodeでポートフォワードに使用するポートです。 (デフォルト: 18889)
     - 18889が他のサービスで使用されている場合に指定します。
-- `-W, --why-run` (ChefCore)
+- `-W, --why-run`
     - Chef-Clientの実行をWhy-Runモードで行います。
 - `-o, --override-runlist RunlistItem,RunlistItem`
     - Nodeのランリストを上書き指定します。
