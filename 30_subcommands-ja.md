@@ -8,6 +8,8 @@ title: Subcommands
 
 ## [zero bootstrap](#bootstrap)
 
+`knife zero bootstrap FQDN (options)`
+
 リモートNodeの初期化を行います、次の機能をもちます。
 
 - NodeにChef-Clientをインストールする。
@@ -20,7 +22,9 @@ title: Subcommands
 
 ### Options(抜粋)
 
-Chef本体の`knife bootstrap`からオプションを引き継いでいます。本体のバージョンにより、使えるオプションは変動します。
+Chef本体の[`knife bootstrap`](https://docs.chef.io/knife_bootstrap.html)からオプションを引き継いでいます。本体のバージョンにより、使えるオプションは変動します。
+
+Knife-Zeroで追加したオプションと、よく聞かれるオプションは次の通りです。
 
 - `--converge/--no-converge`
     - Bootstrapコマンド実行時に、Chef-Clientを実行するかしないか切り替えます。
@@ -41,7 +45,7 @@ Chef本体の`knife bootstrap`からオプションを引き継いでいます�
 - `--sudo` (ChefCore)
     - リモートNodeでChef-Clientの実行にsudoを使います。
 - `-W, --why-run` (ChefCore)
-    - Chef-Clientの実行時をWhy-Runモードで行います。
+    - Chef-Clientの実行をWhy-Runモードで行います。
     - Chefのインストール、設定変更までは実際に行われます。
 
 
@@ -55,13 +59,34 @@ WIP
 
 ## [zero converge](#converge)
 
-Chef本体の`knife ssh`からオプションを引き継いでいます。本体のバージョンにより、使えるオプションは変動します。
-BootstrapおよびChef-Client実行済み(Node情報収集ずみ)のNodeに対して、Chef-Clientを再度実行します。
+`knife zero converge QUERY (options)`
 
+BootstrapおよびChef-Client実行済み(Node情報収集ずみ)のNodeに対して、Chef-Clientを再度実行します。  
+対象Nodeはクエリ結果で絞込みます。クエリの書式は[knife search](https://docs.chef.io/knife_search.html)の`SEARCH_QUERY`と同一です。
 
 ### Options(抜粋)
 
-WIP
+Chef本体の[`knife ssh`](https://docs.chef.io/knife_ssh.html)からオプションを引き継いでいます。本体のバージョンにより、使えるオプションは変動します。
+
+Knife-Zeroで追加したオプションと、よく聞かれるオプションは次の通りです。
+
+- `-a, --attribute ATTR` (ChefCore)
+    - SSHの接続先として用いるattributeを指定します。
+    - デフォルトで使用されるホスト名(FQDNおよびName)が接続先として利用できない場合に使用します。
+    - なお、Knife-ZeroでBootstrapしたNodeでは、使用したホスト/IPアドレスを`knife_zero.host`として再利用できます。
+- `-C, --concurrency NUM` (ChefCore)
+    - 対象が複数台ある際に、並行して実行する数を指定します。
+- `--remote-chef-zero-port`
+    - リモートNodeでポートフォワードに使用するポートです。 (デフォルト: 18889)
+    - 18889が他のサービスで使用されている場合に指定します。
+- `-W, --why-run` (ChefCore)
+    - Chef-Clientの実行をWhy-Runモードで行います。
+- `-o, --override-runlist RunlistItem,RunlistItem`
+    - Nodeのランリストを上書き指定します。
+    - このオプションを指定した場合、ローカルのNodeオブジェクトを更新しません。
+- `--[no-]sudo`
+    - リモートNodeでChef-Clientの実行にsudoを使います。
+
 
 ### Examples
 
@@ -69,7 +94,7 @@ WIP
 
 ## [zero diagnose](#diagnose)
 
-knife.rbから生成される設定を大まかに出力します。
+knife.rbから生成される設定を大まかに出力します。特にオプションはありません。
 設定内容の確認やバグ報告に使います。
 
 ```
