@@ -131,6 +131,7 @@ a.sidebar-nav-item:focus {
     max-width: 38rem;
     margin-left: 20rem;
     margin-right: 2rem;
+    font-size: 16px;
   }
 }
 
@@ -138,6 +139,7 @@ a.sidebar-nav-item:focus {
   .content {
     margin-left: 22rem;
     margin-right: 4rem;
+    font-size: 18px;
   }
 }
 
