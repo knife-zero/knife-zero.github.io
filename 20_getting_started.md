@@ -8,6 +8,8 @@ title: Getting Started
 
 WIP
 
+See [knife-zero/README.md](https://github.com/higanworks/knife-zero/blob/master/README.md)
+
 ## How to manage bootstraped nodes.
 
 WIP
