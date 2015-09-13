@@ -54,7 +54,47 @@ Knife-Zeroで追加したオプションと、よく聞かれるオプション�
 
 ### Examples
 
-WIP
+到達性と名前のパターン。
+
+```
+# ノードが解決可能なホスト名を持つ
+$ knife zero bootstrap zero.example.com
+
+# 任意の名前を付与
+$ knife zero bootstrap zero.example.com --name zero.example.com
+
+# ノードが解決可能なホスト名を持たない
+$ knife zero bootstrap 210.152.xxx.xxx --name zero01
+
+# SSHに使用するログイン名がubuntuで、sudoが必要
+$ knife zero bootstrap 210.152.xxx.xxx --name zero01 -x ubuntu --sudo
+```
+
+初回のChef-Client実行時にNormal Attributeを付与する。
+
+```
+# 文字列として渡す
+$ knife zero bootstrap zero.example.com --json-attributes '{"mykey":"myval"}'
+
+# ファイルから読み込む
+$ knife zero bootstrap zero.example.com --json-attribute-file tmp/node.json
+```
+
+初回のChef-Client実行時に任意のレシピを実行する。
+
+```
+# 複数要素を持つランリストを指定する
+$ knife zero bootstrap zero.example.com --run-list "role[base],recipe[iptables::www]"
+
+# JSONファイルを同時に指定する
+$ knife zero bootstrap zero.example.com --run-list "role[base],recipe[iptables::www]" --json-attribute-file tmp/node.json
+```
+
+Bootstrap済みNodeの、`client.rb`だけを更新。
+
+```
+$ knife zero bootstrap zero.example.com -N zero.example.com --no-converge
+```
 
 
 ## [zero converge](#converge)
@@ -84,13 +124,26 @@ Knife-Zeroで追加したオプションと、よく聞かれるオプション�
 - `-o, --override-runlist RunlistItem,RunlistItem`
     - Nodeのランリストを上書き指定します。
     - このオプションを指定した場合、ローカルのNodeオブジェクトを更新しません。
-- `--[no-]sudo`
+- `--sudo/--no-sudo`
     - リモートNodeでChef-Clientの実行にsudoを使います。
 
 
 ### Examples
 
-WIP
+```
+# すべてのNodeをConverge
+$ knife zero converge "name:*" --attribute knife_zero.host
+
+# すべてのNodeをConverge、5Nodeずつ並行。
+$ knife zero converge "name:*" --attribute knife_zero.host --concurrency 5
+
+# Environment == "production" のNodeをConverge
+$ knife zero converge "chef_environment:production" --attribute knife_zero.host
+
+# 任意のランリストを使用する
+$ knife zero converge "name:*" --attribute knife_zero.host --override-runlist "role[patch]"
+```
+
 
 ## [zero diagnose](#diagnose)
 
