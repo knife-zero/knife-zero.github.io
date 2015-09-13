@@ -4,8 +4,6 @@ lang: ja
 title: Configration
 ---
 
-## [Configration](#configration)
-
 knife.rbに設定することができる、Knife-Zero固有のオプションです。
 
 - `knife[:automatic_attribute_whitelist]`
