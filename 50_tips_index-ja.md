@@ -7,7 +7,7 @@ title: Tips and Links
 {% assign pages_list = site.pages %}
 {% for node in pages_list %}
   {% if node.title != null %}
-    {% if node.layout == "tips" %}
+    {% if node.layout == "tips-ja" %}
       {% if node.lang == "ja" %}
 - [{{ node.title }}]({{site.baseurl}}{{ node.url }})
       {% endif %}

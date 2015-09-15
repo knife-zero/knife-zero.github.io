@@ -1,5 +1,5 @@
 ---
-layout: tips
+layout: tips-ja
 lang: ja
 title: Cookbookマネージャと一緒に
 permalink: tips/with_cookbook_manager-ja.html
