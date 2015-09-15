@@ -2,7 +2,7 @@
 layout: tips
 lang: en
 title: Cookbook Manager Integration
-permalink: tips/with_cookbook_manager.html
+permalink: tips/with_cookbook_manager/
 ---
 
 
