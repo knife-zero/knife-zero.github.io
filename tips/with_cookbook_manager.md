@@ -41,7 +41,27 @@ When you see `Cheffile and Cheffile.lock are out of sync!`, you should correct d
 
 ## Berkshelf
 
-WIP
+Resolve and download Cookbooks which are managed under Berksfile by `berks vendor` into `./cookbooks`.
+
+```
+$ berks vendor cookbooks
+```
+
+Stick the following in your knife.rb:
+
+```
+cookbook_path File.expand_path("../cookbooks", __FILE__),
+              "/path/to/chef-repo/site-cookbooks")
+```
+
+For example. `knife.rb` in your chef_repo root.
+
+```
+cookbook_path File.expand_path("../cookbooks", __FILE__),
+              File.expand_path("../site-cookbooks", __FILE__)
+```
+
+But in this way for loose integration with  Berksfile, please attention to the contradiction.
 
 ## Policyfile
 
