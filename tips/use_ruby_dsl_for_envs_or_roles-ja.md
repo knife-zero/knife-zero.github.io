@@ -24,6 +24,9 @@ chef_repo_path File.expand_path("../", __FILE__)
 
 ```
 
+ただし、`knife edit`ほか通常のワークフロー用コマンドの対象外になるので注意。
+
+
 JSONファイルは`.gitignore`に追加しておきましょう。
 
 ```
