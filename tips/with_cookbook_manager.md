@@ -63,6 +63,8 @@ cookbook_path File.expand_path("../cookbooks", __FILE__),
 
 But in this way for loose integration with  Berksfile, please attention to the contradiction.
 
+To check current cookbooks, try `berks verify`.
+
 ## Policyfile
 
 WIP
