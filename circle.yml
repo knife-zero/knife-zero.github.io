@@ -1,5 +1,6 @@
 ---
-artifacts:
+general:
+  artifacts:
     - "~/_site"
 machine:
   ruby:
