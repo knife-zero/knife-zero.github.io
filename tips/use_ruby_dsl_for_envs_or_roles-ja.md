@@ -7,7 +7,7 @@ permalink: tips/use_ruby_dsl_for_envs_or_roles-ja/
 
 Chef-Zeroがサポートしていないので、そのままではEnvironmentsやRolesにRuby DSLはつかえません。
 
-もしRuby DSLをつかうなら、`knife.rb`にて都度JSONに変換しちゃいましょう。
+私はあまりRoleなどにRubyを使わないですが、もしRuby DSLをつかいたいなら、`knife.rb`にて都度JSONに変換しちゃいましょう。
 
 ```
 Dir.glob("roles/*.rb").each do |rf|
