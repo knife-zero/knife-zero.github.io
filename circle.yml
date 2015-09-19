@@ -1,19 +1,9 @@
 ---
-general:
-  branches:
-    ignore:
-      - gh-pages
+artifacts:
+    - "~/_site"
 machine:
   ruby:
-    version: 2.1.5
-  services:
-    - docker
+    version: 2.1.7
 test:
   override:
-    - bundle exec ruby test/run_test.rb -v
-deployment:
-  integration:
-    branch: integration_testedge
-    commands:
-      - docker build -t local/knife-zero .
-      - docker run -it local/knife-zero sh run.sh
+    - bundle exec jekyll build
