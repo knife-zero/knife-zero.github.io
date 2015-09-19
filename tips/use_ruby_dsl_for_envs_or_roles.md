@@ -8,7 +8,7 @@ permalink: tips/use_ruby_dsl_for_envs_or_roles/
 Chef-Zero doesn't support Environments/Roles which written by Ruby DSL.
 
 
-You can convert them by `knife.rb` at every knife run.
+Although I do not usually write roles or others using ruby. But you can convert them by `knife.rb` at every knife run.
 
 ```
 Dir.glob("roles/*.rb").each do |rf|
