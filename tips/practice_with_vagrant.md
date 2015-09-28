@@ -9,6 +9,10 @@ You can test cookbooks easily by Test-Kitchen before manage remote nodes instead
 
 See [Getting Started knife-zero with test-kitchen](https://github.com/higanworks/knife-zero-with-kitchen).
 
+I think that you'd better use cloud servers to test the knife-zero insteard of vagrant.
+
+When testing knife-zero with vagrant, we should know that how vagrant networking works and TCP forwarding via SSH.
+
 ### Or, Try knife-zero simply with Vagrant.
 
 > **For Your Information** :  
