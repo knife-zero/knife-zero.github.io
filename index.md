@@ -63,7 +63,7 @@ When it's existence or Node is provisioned by other tools, Knife-Zero is conveni
 
 If you seem to hard about learning chef but love Ruby, You can consider the [Itamae](http://itamae.kitchen/).
 
-Well, you can try Knife-Zero [Getting Started](/knife-zero/20_getting_started/).
+Well, you can try Knife-Zero [Getting Started](/20_getting_started/).
 
 
 {% comment %}
