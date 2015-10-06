@@ -22,10 +22,10 @@
 
     <ul class="sidebar-nav">
       <li class="sidebar-nav-item{% if page.title == "Home" %} active{% endif %}">
-        {% if page.url != "/ja/" OR "/ja/index.html" %}
-          <a href="{{ site.baseurl }}/ja">Home</a> ( <a href="{{ page.url | replace: "-ja/", "/" }}">En</a> / Ja )
+        {% if page.url != "/ja/index.html" %}
+          <a href="{{ site.baseurl }}/ja/">Home</a> ( <a href="{{ page.url | replace: "-ja/", "/" }}">En</a> / Ja )
         {% else %}
-          <a href="{{ site.baseurl }}/ja">Home</a> ( <a href="{{ site.baseurl }}/">En</a> / Ja )
+          <a href="{{ site.baseurl }}/ja/">Home</a> ( <a href="{{ site.baseurl }}/">En</a> / Ja )
         {% endif %}
       </li>
 
