@@ -60,8 +60,6 @@ knife[:automatic_attribute_whitelist] = [
 
 ### サーバに Bootstrap をかける
 
-Bootstraping development server. Unless otherwise stated, all commands have been running on the workstation.
-
 とりあえず開発用サーバにBootstrapを実行します。特に記述がなければ、各操作はKnife-Zeroをインストールしたローカルのコンピュータ(Workstation)で実行します。
 
 ```
