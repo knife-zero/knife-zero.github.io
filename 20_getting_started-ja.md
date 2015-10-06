@@ -541,7 +541,7 @@ $ knife zero converge "chef_environment:*" -x ubuntu
 
 - [All about Chef ... — Chef Docs](https://docs.chef.io/ "All about Chef ... — Chef Docs")
 
-それか、GithubにIssue切るとか、プルリクを送るとか。
+それか、Githubにイシュー(日本語歓迎)からはじめるとか、プルリクを送るとか。
 
 - [higanworks/knife-zero | Github](https://github.com/higanworks/knife-zero "higanworks/knife-zero")
 
