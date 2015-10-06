@@ -11,7 +11,7 @@ Knife-Zero is plugin for [Chef](https://www.chef.io/).
     - uses HTTP like Chef-Server/Client, via ssh port forwarding.
 - It can collect node object into local chef-repo.
 - It supports all functions of chef(C/S).
-    - such as serach, edit node, etc...
+    - such as search, edit node, etc...
     - except enterprise addons.
 - You have only to manage one chef-repo.
 - Windows Server(Target) is not supported.
