@@ -267,8 +267,6 @@ Reading package lists... Done
 
 ### Converge
 
-Next, we can run chef-client on remote servers by `zero converge` without any changes. 
-
 Bootstrapが済んだサーバには、とりあえず`zero converge`で **特に何も変更しない** Chef-Clientを実行できるようになっています。
 
 ```
@@ -402,8 +400,6 @@ Recipes:
 Platform:    ubuntu 12.04
 Tags:        
 ```
-
-To apply Run-List of node by running converge without `--override-runlist` option.
 
 今度は`--override-runlist`オプション無しで、`zero converge`を実行します。レシピが適用されていますね。
 
