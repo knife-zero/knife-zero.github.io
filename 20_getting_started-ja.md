@@ -178,7 +178,7 @@ Tags:
 
 ### knife search と knife ssh
 
-`node/*json`が出来たら、KnifeのSearchとSSHが使えるようになります。
+`nodes/*json`が出来たら、KnifeのSearchとSSHが使えるようになります。
 
 - [knife search — Chef Docs](https://docs.chef.io/knife_search.html "knife search — Chef Docs")
 - [knife ssh — Chef Docs](https://docs.chef.io/knife_ssh.html "knife ssh — Chef Docs")
