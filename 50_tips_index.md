@@ -15,7 +15,7 @@ title: Tips and Links
   {% endif %}
 {% endfor %}
 
-## [Links](#LInks)
+## [Links](#Links)
 
 Blogs written by me.
 

@@ -1,7 +1,7 @@
 ---
 layout: default-ja
 title: Home(ja)
-pamalink: ja/index.html
+permalink: ja/index.html
 ---
 
 # Knife-Plugin Zero

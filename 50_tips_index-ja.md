@@ -15,7 +15,7 @@ title: Tips and Links
   {% endif %}
 {% endfor %}
 
-## [Links](#LInks)
+## [Links](#Links)
 
 自分で書いたKnife-Zeroの話。
 
