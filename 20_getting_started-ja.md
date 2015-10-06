@@ -178,14 +178,14 @@ Platform:    ubuntu 12.04
 Tags:        
 ```
 
-### Search and SSH
+### knife search と knife ssh
 
-We can search and run command via ssh.
+`node/*json`が出来たら、KnifeのSearchとSSHが使えるようになります。
 
 - [knife search — Chef Docs](https://docs.chef.io/knife_search.html "knife search — Chef Docs")
 - [knife ssh — Chef Docs](https://docs.chef.io/knife_ssh.html "knife ssh — Chef Docs")
 
-Search with attributes.
+Searchは対象オブジェクトと、キーのクエリを指定します。
 
 ```
 $ knife search node "name:dev*"
@@ -226,7 +226,7 @@ Platform:    ubuntu 12.04
 Tags:        
 ```
 
-Run command to nodes witch was found by query.
+Searchで確認できる対象には、`knife ssh`でリモートコマンドを実行して回る事ができます。
 
 ```
 $ knife ssh "platform:ubuntu" --ssh-user ubuntu hostname
@@ -271,6 +271,8 @@ Reading package lists... Done
 
 Next, we can run chef-client on remote servers by `zero converge` without any changes. 
 
+Bootstrapが済んだサーバには、とりあえず`zero converge`で **特に何も変更しない** Chef-Clientを実行できるようになっています。
+
 ```
 $ knife zero converge "name:*" --ssh-user ubuntu
 153.120.97.132 sudo: unable to resolve host server1
@@ -301,18 +303,19 @@ $ knife zero converge "name:*" --ssh-user ubuntu
 153.120.97.133 Chef Client finished, 0/0 resources updated in 1.970427916 seconds
 ```
 
-Now, we have prepared to manage by chef. 
+これで準備はできました。
 
-> Note:  
-> Remember, we don't have to use recipes to manage servers.  
-> It is possible that we can manage simply with using `knife (ssh|search|node list)` without converge.  
-> In other words, we can use chef-repository which is created by Knife-Zero as just management ledger.
+> メモ:  
+> 念の為に言っておくと、この後にサーバに変更を行なうにあたって、無理してわざわざレシピを使わなければいけないということはありません。  
+> Cookbookを使わずとも、`knife (ssh|search|node list)`だけで大体の操作はできるので、サーチやリモートコマンドを使える単に便利な管理台帳として使ったっていいんだよ。
 
-### Create recipe and apply it.
 
-OK, let's edit our Chef-Repo and manage servers.
+### レシピを書いて、適用する
 
-Create cookbook `create_file` to `./cookbooks/`.
+それでは、Chef-Repo内にレシピを作って、サーバに適用してみましょう。
+
+
+`create_file`というCookbookを作ってみましょう、ファイルは`./cookbooks/`以下に作られます。
 
 ```
 $ knife cookbook create create_file
@@ -322,7 +325,7 @@ $ knife cookbook create create_file
 ** Creating metadata for cookbook: create_file
 ```
 
-And edit `cookbooks/create_file/recipes/default.rb` like below.
+Cookbookに含まれる、`cookbooks/create_file/recipes/default.rb`を次のように編集します。
 
 ```
 file '/tmp/myenvironment' do
@@ -330,7 +333,7 @@ file '/tmp/myenvironment' do
 end
 ```
 
-Converge `develop-server` by `--override-runlist` option.
+では早速、`develop-server`に適用してみましょう、`zero converge`に`--override-runlist`オプションで指定します。
 
 ```
 $ knife zero converge "name:develop-server" --ssh-user ubuntu --override-runlist create_file
@@ -359,14 +362,14 @@ $ knife zero converge "name:develop-server" --ssh-user ubuntu --override-runlist
 153.120.97.132 Chef Client finished, 1/1 resources updated in 1.712681794 seconds
 ```
 
-It creates file on remote server.
+サーバ上にファイルができましたね。
 
 ```
 (server1)$ cat /tmp/myenvironment 
 _default
 ```
 
-`--override-runlist` doesn't udpate local node file. Run-List of node was leave empty.
+さて、実は`--override-runlist` はローカルのNodeファイルを更新しません。 Run Listはカラッポのままです。
 
 ```
 $ knife node show develop-server
@@ -381,7 +384,7 @@ Platform:    ubuntu 12.04
 Tags:        
 ```
 
-If we want to register recipe to node permanently, should use `node run_list add`.
+このレシピの実行を永続的に登録したい場合、`node run_list add`コマンドを使用します。
 
 - `knife node run_list add [NODE] [ENTRY[,ENTRY]] (options)`
 
@@ -404,6 +407,8 @@ Tags:
 
 To apply Run-List of node by running converge without `--override-runlist` option.
 
+今度は`--override-runlist`オプション無しで、`zero converge`を実行します。レシピが適用されていますね。
+
 ```
 $ knife zero converge "name:develop-server" -x ubuntu
 153.120.97.132 sudo: unable to resolve host server1
@@ -423,13 +428,15 @@ $ knife zero converge "name:develop-server" -x ubuntu
 153.120.97.132 Chef Client finished, 0/1 resources updated in 1.852618101 seconds
 ```
 
-Managing nodes with knife-zero workflow is almost same as Chef-Server and Client usage. Please see official document to learn more. 
+Knife-Zeroでサーバ(Node)管理のワークフローはChef-Server/Client環境とほぼ同じです。公式ドキュメントは参考になるので、一読を。
 
 - [knife node — Chef Docs](https://docs.chef.io/knife_node.html "knife node — Chef Docs")
 
-#### assigning environments
+#### Environmentsを割り当てる
 
-Create two environments, `development` and `production`.
+じゃあ本番用、開発用で処理を分ける一例、Environmentを使ってみましょう。
+
+`knife environment create`で`development`と`production`と2つのEnvironmentを作成します。
 
 ```
 $ knife environment create development --disable-editing
@@ -446,8 +453,7 @@ production.json
 
 - [About Environments — Chef Docs](https://docs.chef.io/environments.html "About Environments — Chef Docs")
 
-
-We can assign specific environment each nodes by `node environment set`.
+`node environment set`で、各サーバにそれぞれEnvironmentを割当ててみます。
 
 - `knife node environment set NODE ENVIRONMENT`
 
@@ -461,7 +467,7 @@ production-server:
   chef_environment: production
 ```
 
-Search key of environment is `chef_environment`.
+Environmentをサーチのキーに使う場合、名称は`chef_environment`です。
 
 ```
 $ knife search node "chef_environment:production"
@@ -478,7 +484,7 @@ Platform:    ubuntu 12.04
 Tags:        
 ```
 
-Next, set same recipes to production-server.
+では、`production-server`のRun-Listにも`create_file`を登録しましょう。
 
 ```
 $ knife node run_list add production-server create_file
@@ -486,7 +492,8 @@ production-server:
   run_list: recipe[create_file]
 ```
 
-Converge all servers. It runs same recipe to two servers, but result depends on their environment.
+両方のサーバを対象に`zero converge`を実行します。  
+同じレシピを適用していますが、結果はそれぞれに割り当てられたEnvironmentによって違いますね。
 
 ```
 $ knife zero converge "chef_environment:*" -x ubuntu
@@ -534,4 +541,14 @@ $ knife zero converge "chef_environment:*" -x ubuntu
 153.120.97.133 Chef Client finished, 1/1 resources updated in 2.218201444 seconds
 ```
 
-Were you able to do?
+できました？
+
+何かよくわからないことがあったら、まずはChefの公式ドキュメントをみてください。繰り返しになりますが、Knife-ZeroはChef-Server環境と同じです。
+
+- [All about Chef ... — Chef Docs](https://docs.chef.io/ "All about Chef ... — Chef Docs")
+
+それか、GithubにIssue切るとか、プルリクを送るとか。
+
+- [higanworks/knife-zero | Github](https://github.com/higanworks/knife-zero "higanworks/knife-zero")
+
+また、Twitterで適当に言及しておけば、いつのまにかこのドキュメントが更新されていることもあります。

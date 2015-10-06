@@ -526,4 +526,13 @@ $ knife zero converge "chef_environment:*" -x ubuntu
 153.120.97.133 Chef Client finished, 1/1 resources updated in 2.218201444 seconds
 ```
 
-Were you able to do?
+Were you able to do? 
+
+If there is that if you are in trouble, First, let's check the official document. Again, Knife-Zero is the same as the Chef-Server environment.
+
+- [All about Chef ... — Chef Docs](https://docs.chef.io/ "All about Chef ... — Chef Docs")
+
+Or, you can create issue an pull request to knife-zero, or visit chat.
+
+- [higanworks/knife-zero | Github](https://github.com/higanworks/knife-zero "higanworks/knife-zero")
+
