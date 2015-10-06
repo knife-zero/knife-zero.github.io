@@ -57,7 +57,7 @@ knife[:automatic_attribute_whitelist] = [
 
 ### Bootstrap servers
 
-Bootstraping development server. Unless otherwise stated, all commands have been running on the workstation.
+Bootstrapping development server. Unless otherwise stated, all commands have been running on the workstation.
 
 ```
 $ knife zero bootstrap 153.120.97.132 --ssh-user ubuntu
@@ -358,7 +358,7 @@ It creates file on remote server.
 _default
 ```
 
-`--override-runlist` doesn't udpate local node file. Run-List of node was leave empty.
+`--override-runlist` doesn't update local node file. Run-List of node was leave empty.
 
 ```
 $ knife node show develop-server

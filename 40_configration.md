@@ -1,10 +1,10 @@
 ---
 layout: page
 lang: en
-title: Configration
+title: Configuration
 ---
 
-## Recommended Configration
+## Recommended Configuration
 
 - `knife.rb`
 
@@ -36,7 +36,7 @@ knife[:automatic_attribute_whitelist] = [
 ```
 
 
-## Knife-Zero specific configration for `knife.rb`
+## Knife-Zero specific configuration for `knife.rb`
 
 - `knife[:automatic_attribute_whitelist]`
     - add attribute whitelist to `client.rb` which is put on remote Node.

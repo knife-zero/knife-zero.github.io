@@ -1,7 +1,7 @@
 ---
 layout: page-ja
 lang: ja
-title: Configration
+title: Configuration
 ---
 
 ## ざっくりしたおすすめ設定
