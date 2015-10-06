@@ -261,7 +261,7 @@ Reading package lists... Done
 
 ### Converge
 
-WIP
+Next, we can run chef-client on remote servers by `zero converge` without any changes. 
 
 ```
 $ knife zero converge "name:*" --ssh-user ubuntu
@@ -293,13 +293,237 @@ $ knife zero converge "name:*" --ssh-user ubuntu
 153.120.97.133 Chef Client finished, 0/0 resources updated in 1.970427916 seconds
 ```
 
-----
+Now, we have prepared to manage by chef. 
 
-WIP...
+> Note:  
+> Remember, we don't have to use recipes to manage servers.  
+> It is possible that we can manage simply with using `knife (ssh|search|node list)` without converge.  
+> In other words, we can use chef-repository which is created by Knife-Zero as just management ledger.
+
+### Create recipe and apply it.
+
+OK, let's edit our Chef-Repo and manage servers.
+
+Create cookbook `create_file` to `./cookbooks/`.
+
+```
+$ knife cookbook create create_file
+** Creating cookbook create_file in /Users/sawanoboriyu/bitbucket/sawanoboly/knife-zero.gettingstarted/cookbooks
+** Creating README for cookbook: create_file
+** Creating CHANGELOG for cookbook: create_file
+** Creating metadata for cookbook: create_file
+```
+
+And edit `cookbooks/create_file/recipes/default.rb` like below.
+
+```
+file '/tmp/myenvironment' do
+  content node.chef_environment
+end
+```
+
+Converge `develop-server` by `--override-runlist` option.
+
+```
+$ knife zero converge "name:develop-server" --ssh-user ubuntu --override-runlist create_file
+153.120.97.132 sudo: unable to resolve host server1
+153.120.97.132 Starting Chef Client, version 12.4.3
+153.120.97.132 WARN: Run List override has been provided.
+153.120.97.132 WARN: Original Run List: []
+153.120.97.132 WARN: Overridden Run List: [recipe[create_file]]
+153.120.97.132 resolving cookbooks for run list: ["create_file"]
+153.120.97.132 Synchronizing Cookbooks:
+153.120.97.132   - create_file
+153.120.97.132 Compiling Cookbooks...
+153.120.97.132 Converging 1 resources
+153.120.97.132 Recipe: create_file::default
+153.120.97.132   * file[/tmp/myenvironment] action create
+153.120.97.132     - create new file /tmp/myenvironment
+153.120.97.132     - update content in file /tmp/myenvironment from none to 3bf305
+153.120.97.132     --- /tmp/myenvironment	2015-xx-xx xx:xx:xx.846280326 +0900
+153.120.97.132     +++ /tmp/.myenvironment20151006-17877-1itgu45	2015-xx-xx xx:xx:xx.846280326 +0900
+153.120.97.132     @@ -1 +1,2 @@
+153.120.97.132     +_default
+153.120.97.132 WARN: Skipping final node save because override_runlist was given
+153.120.97.132 
+153.120.97.132 Running handlers:
+153.120.97.132 Running handlers complete
+153.120.97.132 Chef Client finished, 1/1 resources updated in 1.712681794 seconds
+```
+
+It creates file on remote server.
+
+```
+(server1)$ cat /tmp/myenvironment 
+_default
+```
+
+`--override-runlist` doesn't udpate local node file. Run-List of node was leave empty.
+
+```
+$ knife node show develop-server
+Node Name:   develop-server
+Environment: _default
+FQDN:        
+IP:          153.120.97.132
+Run List:    
+Roles:       
+Recipes:     
+Platform:    ubuntu 12.04
+Tags:        
+```
+
+If we want to register recipe to node permanently, should use `node run_list add`.
+
+- `knife node run_list add [NODE] [ENTRY[,ENTRY]] (options)`
+
+```
+$ knife node run_list add develop-server create_file
+develop-server:
+  run_list: recipe[create_file]
+
+$ knife node show develop-server 
+Node Name:   develop-server
+Environment: _default
+FQDN:        
+IP:          153.120.97.132
+Run List:    recipe[create_file]
+Roles:       
+Recipes:     
+Platform:    ubuntu 12.04
+Tags:        
+```
+
+To apply Run-List of node by running converge without `--override-runlist` option.
+
+```
+$ knife zero converge "name:develop-server" -x ubuntu
+153.120.97.132 sudo: unable to resolve host server1
+153.120.97.132 Starting Chef Client, version 12.4.3
+153.120.97.132 resolving cookbooks for run list: ["create_file"]
+153.120.97.132 Synchronizing Cookbooks:
+153.120.97.132   - create_file
+153.120.97.132 Compiling Cookbooks...
+153.120.97.132 Converging 1 resources
+153.120.97.132 Recipe: create_file::default
+153.120.97.132   * file[/tmp/myenvironment] action create (up to date)
+153.120.97.132 WARN: Could not find whitelist attribute fqdn/.
+153.120.97.132 WARN: Could not find whitelist attribute cloud/.
+153.120.97.132 
+153.120.97.132 Running handlers:
+153.120.97.132 Running handlers complete
+153.120.97.132 Chef Client finished, 0/1 resources updated in 1.852618101 seconds
+```
+
+Managing nodes with knife-zero workflow is almost same as Chef-Server and Client usage. Please see official document to learn more. 
+
+- [knife node — Chef Docs](https://docs.chef.io/knife_node.html "knife node — Chef Docs")
+
+#### assigning environments
+
+Create two environments, `development` and `production`.
+
+```
+$ knife environment create development --disable-editing
+Created development
+
+$ knife environment create production --disable-editing
+Created production
 
 
-See [knife-zero/README.md](https://github.com/higanworks/knife-zero/blob/master/README.md)
+$ ls -1 environments/
+development.json
+production.json
+```
 
-## How to manage bootstraped nodes.
+- [About Environments — Chef Docs](https://docs.chef.io/environments.html "About Environments — Chef Docs")
 
-WIP
+
+We can assign specific environment each nodes by `node environment set`.
+
+- `knife node environment set NODE ENVIRONMENT`
+
+```
+$ knife node environment set develop-server development
+develop-server:
+  chef_environment: development
+
+$ knife node environment set production-server production
+production-server:
+  chef_environment: production
+```
+
+Search key of environment is `chef_environment`.
+
+```
+$ knife search node "chef_environment:production"
+1 items found
+
+Node Name:   production-server
+Environment: production
+FQDN:        
+IP:          153.120.97.133
+Run List:    
+Roles:       
+Recipes:     
+Platform:    ubuntu 12.04
+Tags:        
+```
+
+Next, set same recipes to production-server.
+
+```
+$ knife node run_list add production-server create_file
+production-server:
+  run_list: recipe[create_file]
+```
+
+Converge all servers. It runs same recipe to two servers, but result depends on their environment.
+
+```
+$ knife zero converge "chef_environment:*" -x ubuntu
+153.120.97.132 sudo: unable to resolve host server1
+153.120.97.133 sudo: unable to resolve host server2
+153.120.97.132 Starting Chef Client, version 12.4.3
+153.120.97.133 Starting Chef Client, version 12.4.3
+153.120.97.132 resolving cookbooks for run list: ["create_file"]
+153.120.97.132 Synchronizing Cookbooks:
+153.120.97.132   - create_file
+153.120.97.132 Compiling Cookbooks...
+153.120.97.132 Converging 1 resources
+153.120.97.132 Recipe: create_file::default
+153.120.97.132   * file[/tmp/myenvironment] action create
+153.120.97.132     - update content in file /tmp/myenvironment from 3bf305 to 875b93
+153.120.97.132     --- /tmp/myenvironment	2015-xx-xx xx:xx:xx.846280326 +0900
+153.120.97.132     +++ /tmp/.myenvironment20151006-19739-ml9ybe	2015-xx-xx xx:xx:xx.698338024 +0900
+153.120.97.132     @@ -1,2 +1,2 @@
+153.120.97.132     -_default
+153.120.97.132     +development
+153.120.97.132 WARN: Could not find whitelist attribute fqdn/.
+153.120.97.132 WARN: Could not find whitelist attribute cloud/.
+153.120.97.132 
+153.120.97.132 Running handlers:
+153.120.97.132 Running handlers complete
+153.120.97.132 Chef Client finished, 1/1 resources updated in 1.953228699 seconds
+153.120.97.133 resolving cookbooks for run list: ["create_file"]
+153.120.97.133 Synchronizing Cookbooks:
+153.120.97.133   - create_file
+153.120.97.133 Compiling Cookbooks...
+153.120.97.133 Converging 1 resources
+153.120.97.133 Recipe: create_file::default
+153.120.97.133   * file[/tmp/myenvironment] action create
+153.120.97.133     - create new file /tmp/myenvironment
+153.120.97.133     - update content in file /tmp/myenvironment from none to ab8e18
+153.120.97.133     --- /tmp/myenvironment	2015-xx-xx xx:xx:xx.291539816 +0900
+153.120.97.133     +++ /tmp/.myenvironment20151006-17291-rpkr7j	2015-xx-xx xx:xx:xx.291539816 +0900
+153.120.97.133     @@ -1 +1,2 @@
+153.120.97.133     +production
+153.120.97.133 WARN: Could not find whitelist attribute fqdn/.
+153.120.97.133 WARN: Could not find whitelist attribute cloud/.
+153.120.97.133 
+153.120.97.133 Running handlers:
+153.120.97.133 Running handlers complete
+153.120.97.133 Chef Client finished, 1/1 resources updated in 2.218201444 seconds
+```
+
+Were you able to do?
