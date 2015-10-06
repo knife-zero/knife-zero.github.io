@@ -25,7 +25,7 @@ $ touch ./knife.rb
 
 Write settings into `knife.rb`.
 
-```
+```ruby
 local_mode true
 chef_repo_path   File.expand_path('../' , __FILE__)
 
@@ -316,7 +316,7 @@ $ knife cookbook create create_file
 
 And edit `cookbooks/create_file/recipes/default.rb` like below.
 
-```
+```ruby
 file '/tmp/myenvironment' do
   content node.chef_environment
 end

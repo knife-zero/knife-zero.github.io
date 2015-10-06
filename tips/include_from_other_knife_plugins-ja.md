@@ -7,7 +7,7 @@ permalink: tips/include_from_other_knife_plugins-ja/
 
 knife-zeroのBootstrapを他のクラウド操作系プラグインなどから連携したい場合は、次のように依存関係をもたせます。
 
-```
+```ruby
 deps do
   require 'chef/knife/zerobootstrap'
   Chef::Knife::ZeroBootstrap.load_deps

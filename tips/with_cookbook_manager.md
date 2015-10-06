@@ -19,7 +19,7 @@ gem 'librarian-chef'
 
 Stick the following in your knife.rb:
 
-```
+```ruby
 require 'librarian/chef/integration/knife'
 cookbook_path Librarian::Chef.install_path,
               "/path/to/chef-repo/site-cookbooks"
@@ -27,7 +27,7 @@ cookbook_path Librarian::Chef.install_path,
 
 For example. `knife.rb` in your chef_repo root.
 
-```
+```ruby
 require 'librarian/chef/integration/knife'
 cookbook_path Librarian::Chef.install_path,
               File.expand_path("../site-cookbooks", __FILE__)
@@ -49,14 +49,14 @@ $ berks vendor cookbooks
 
 Stick the following in your knife.rb:
 
-```
+```ruby
 cookbook_path File.expand_path("../cookbooks", __FILE__),
               "/path/to/chef-repo/site-cookbooks")
 ```
 
 For example. `knife.rb` in your chef_repo root.
 
-```
+```ruby
 cookbook_path File.expand_path("../cookbooks", __FILE__),
               File.expand_path("../site-cookbooks", __FILE__)
 ```

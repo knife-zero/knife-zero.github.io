@@ -10,7 +10,7 @@ Chef-Zero doesn't support Environments/Roles which written by Ruby DSL.
 
 Although I do not usually write roles or others using ruby. But you can convert them by `knife.rb` at every knife run.
 
-```
+```ruby
 Dir.glob("roles/*.rb").each do |rf|
   role = Chef::Role.new
   role.name(File.basename(rf, ".rb"))

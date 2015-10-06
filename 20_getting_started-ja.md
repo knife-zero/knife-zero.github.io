@@ -27,7 +27,7 @@ $ touch ./knife.rb
 
 `knife.rb`は一旦この様に書いておきます。
 
-```
+```ruby
 local_mode true
 chef_repo_path   File.expand_path('../' , __FILE__)
 
@@ -323,7 +323,7 @@ $ knife cookbook create create_file
 
 Cookbookに含まれる、`cookbooks/create_file/recipes/default.rb`を次のように編集します。
 
-```
+```ruby
 file '/tmp/myenvironment' do
   content node.chef_environment
 end

@@ -9,7 +9,7 @@ Chef-Zeroがサポートしていないので、そのままではEnvironments�
 
 私はあまりRoleなどにRubyを使わないですが、もしRuby DSLをつかいたいなら、`knife.rb`にて都度JSONに変換しちゃいましょう。
 
-```
+```ruby
 Dir.glob("roles/*.rb").each do |rf|
   role = Chef::Role.new
   role.name(File.basename(rf, ".rb"))

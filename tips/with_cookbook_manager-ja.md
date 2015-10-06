@@ -22,7 +22,7 @@ gem 'librarian-chef'
 
 `knife.rb`で`cookbook_path`を次のようにして下さい。
 
-```
+```ruby
 require 'librarian/chef/integration/knife'
 cookbook_path Librarian::Chef.install_path,
               "/path/to/chef-repo/site-cookbooks"
@@ -30,7 +30,7 @@ cookbook_path Librarian::Chef.install_path,
 
 例えば、Chef−Repoのルートに`knife.rb`を置いている環境なら次のように記述します。
 
-```
+```ruby
 require 'librarian/chef/integration/knife'
 cookbook_path Librarian::Chef.install_path,
               File.expand_path("../site-cookbooks", __FILE__)
@@ -51,14 +51,14 @@ $ berks vendor cookbooks
 
 `knife.rb`で`cookbook_path`を次のようにして下さい。
 
-```
+```ruby
 cookbook_path File.expand_path("../cookbooks", __FILE__),
               "/path/to/chef-repo/site-cookbooks")
 ```
 
 例えば、Chef−Repoのルートに`knife.rb`を置いている環境なら次のように記述します。
 
-```
+```ruby
 cookbook_path File.expand_path("../cookbooks", __FILE__),
               File.expand_path("../site-cookbooks", __FILE__)
 ```

@@ -7,7 +7,7 @@ permalink: tips/include_from_other_knife_plugins/
 
 If you want to integrate knife-zero on machine creation with cloud plugins, you can add zerobootstrap to deps like below.
 
-```
+```ruby
 deps do
   require 'chef/knife/zerobootstrap'
   Chef::Knife::ZeroBootstrap.load_deps
