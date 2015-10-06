@@ -4,7 +4,7 @@ lang: ja
 title: Getting Started
 ---
 
-## Getting Started with knife-zero.
+## Knife-Zeroをはじめよう
 
 では、既存のサーバが2台あるとしましょう、それぞれ本番用(production)、開発用(development)あたりで。  
 このGetting Startedで使うサーバについて、条件は次の通り。
