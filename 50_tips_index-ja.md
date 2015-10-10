@@ -24,3 +24,7 @@ title: Tips and Links
 - [chef-zero - Knife-Zeroで管理するnodeオブジェクトを任意のattributesに限定する - Qiita](http://qiita.com/sawanoboly/items/28dfc22929b8fa961456 "chef-zero - Knife-Zeroで管理するnodeオブジェクトを任意のattributesに限定する - Qiita")
 - [Knife-ZeroとVagrant(単品VM) - Qiita](http://qiita.com/sawanoboly/items/ae3c96734c5cee72863c "Knife-ZeroとVagrant(単品VM) - Qiita")
 
+
+ほか
+
+- [knife (zero) bootstrapで入れるChef Clientのバージョンを変える(test-kitchenも) - Qiita](http://qiita.com/Marcy/items/d3e5528a65280dc86f07 "knife (zero) bootstrapで入れるChef Clientのバージョンを変える(test-kitchenも) - Qiita")
