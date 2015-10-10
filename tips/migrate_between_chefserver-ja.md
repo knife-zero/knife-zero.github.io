@@ -16,13 +16,6 @@ permalink: tips/migrate_between_chefserver-ja/
 
 ## Chef-Server から Knife-Zero へ
 
-1. Stop Chef-Client daemon or delete from cron job.
-1. Download `environments`, `roles` and `data_bags` objects from Chef-Server.
-1. Collect or download all cookbooks by Berkshelf or Libraran.
-1. set `local_mode true` and `chef_repo_path` at `knife.rb`.
-1. run `knife zero bootstrap` with `--no-converge` option to update `client.rb` on remote node.
-1. That's all. We could be used `zero converge` after migrate.
-
 1. デーモン稼働のChef-Clientを停止、またはCronジョブから除外します。
 1. `nodes`, `environments`, `roles` および `data_bags` オブジェクトをChef-Serverからダウンロードします(`knife download`)。
 1. Berkshelf や Libraran を用いて、Cookbookをローカルに集めます。
