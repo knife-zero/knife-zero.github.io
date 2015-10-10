@@ -87,6 +87,11 @@ only update client.rb on Node which was bootstrapped.
 $ knife zero bootstrap zero.example.com -N zero.example.com --no-converge
 ```
 
+Bootstrap multi-nodes via GNU Parallel.
+
+```
+$ parallel -j 5 knife zero bootstrap ::: nodeA nodeB nodeC...
+```
 
 ## [zero converge](#converge)
 

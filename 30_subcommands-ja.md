@@ -96,6 +96,12 @@ Bootstrap済みNodeの、`client.rb`だけを更新。
 $ knife zero bootstrap zero.example.com -N zero.example.com --no-converge
 ```
 
+複数のNodeをGNU Parallelで同時にBootstrap。
+
+```
+$ parallel -j 5 knife zero bootstrap ::: nodeA nodeB nodeC...
+```
+
 
 ## [zero converge](#converge)
 
