@@ -9,7 +9,7 @@ permalink: tips/with_cookbook_manager-ja/
 
 自家製CookbookもCookbookマネージャで管理している場合は、`CHEF_REPO/site-cookbooks`は不要です。
 
-## Librarian
+## [Librarian](https://github.com/applicationsonline/librarian-chef)
 
 参考: [librarian-chef#knife-integration](https://github.com/applicationsonline/librarian-chef#knife-integration)
 
@@ -41,7 +41,7 @@ cookbook_path Librarian::Chef.install_path,
 - `librarian-chef install`
 - `librarian-chef clean`
 
-## Berkshelf
+## [Berkshelf](http://berkshelf.com)
 
 `berks vendor`コマンドで`Berksfile`に記述されたCookbookを`cookbooks/`に収容します。
 
@@ -67,6 +67,9 @@ cookbook_path File.expand_path("../cookbooks", __FILE__),
 
 `berks verify`を組み込むといいかもしれまん。
 
+## [Batali](https://github.com/hw-labs/batali)
+
+Berkshelfとほぼ一緒です。
 
 ## Policyfile
 

@@ -6,7 +6,7 @@ permalink: tips/with_cookbook_manager/
 ---
 
 
-## Librarian
+## [Librarian](https://github.com/applicationsonline/librarian-chef)
 
 Ref: [librarian-chef#knife-integration](https://github.com/applicationsonline/librarian-chef#knife-integration)
 
@@ -39,7 +39,7 @@ When you see `Cheffile and Cheffile.lock are out of sync!`, you should correct d
 - `librarian-chef clean`
 
 
-## Berkshelf
+## [Berkshelf](http://berkshelf.com)
 
 Resolve and download Cookbooks which are managed under Berksfile by `berks vendor` into `./cookbooks`.
 
@@ -64,6 +64,10 @@ cookbook_path File.expand_path("../cookbooks", __FILE__),
 But in this way for loose integration with  Berksfile, please attention to the contradiction.
 
 To check current cookbooks, try `berks verify`.
+
+## [Batali](https://github.com/hw-labs/batali)
+
+That is mostly the same as Berkshelf.
 
 ## Policyfile
 
