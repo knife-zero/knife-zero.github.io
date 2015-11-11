@@ -14,7 +14,7 @@ We should use address syntax below.
 $ knife zero bootstrap [::1]  -N v6vm -x vagrant -P vagrant --sudo
 
 ## Append ssh port to tail of string.
-$ knife zero bootstrap ::1:22 -N v6vm -x vagrant -P vagrant --sudo
+$ knife zero bootstrap [::1]:22 -N v6vm -x vagrant -P vagrant --sudo
 
 ## Set scope
 $ knife zero bootstrap fe80::a00:27ff:fe60:59e0%en0 -N v6vm -x vagrant -P vagrant --sudo

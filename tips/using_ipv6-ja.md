@@ -12,7 +12,7 @@ Knife-Zeroでのノート管理にIPv6のアドレスを使いたい場合は、
 $ knife zero bootstrap [::1]  -N v6vm -x vagrant -P vagrant --sudo
 
 ## 末尾にSSHのポートを付与する
-$ knife zero bootstrap ::1:22 -N v6vm -x vagrant -P vagrant --sudo
+$ knife zero bootstrap [::1]:22 -N v6vm -x vagrant -P vagrant --sudo
 
 ## インターフェースのスコープを付ける
 $ knife zero bootstrap fe80::a00:27ff:fe60:59e0%en0 -N v6vm -x vagrant -P vagrant --sudo
