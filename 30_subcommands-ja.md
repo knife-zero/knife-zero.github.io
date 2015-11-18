@@ -132,6 +132,9 @@ Knife-Zeroで追加したオプションと、よく聞かれるオプション�
     - このオプションを指定した場合、ローカルのNodeオブジェクトを更新しません。
 - `--sudo/--no-sudo`
     - リモートNodeでChef-Clientの実行にsudoを使います。
+- `--client-version [latest|VERSION]`
+    - リモートNodeでChef-Clientを実行する前に、任意のバージョンに変更します。
+    - この処理ではOmnibus-chefに含まれるRubyを使います。
 
 
 ### Examples
@@ -150,6 +153,15 @@ $ knife zero converge "chef_environment:production" --attribute knife_zero.host
 $ knife zero converge "name:*" --attribute knife_zero.host --override-runlist "role[patch]"
 ```
 
+`--client-version`の使い方。
+
+```
+# chef-clientを実行する前に、最新バージョンに更新。
+$ knife zero converge "name:*" --attribute knife_zero.host --client-version latest
+
+# chef-clientを実行する前に、12.4.3をインストール。
+$ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4.3
+```
 
 ## [zero diagnose](#diagnose)
 

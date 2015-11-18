@@ -120,6 +120,9 @@ And options that you added in Knife-Zero, frequently asked option is is as follo
     - Replace current run list with specified items for a single run. 
     - It skips save node.json on local
 - `--sudo/--no-sudo`
+- `--client-version [latest|VERSION]`
+    - Up or downgrade omnibus chef-client before converge.
+    - This option uses ruby which is included by omnibus-chef on node.
 
 
 ### Examples
@@ -136,6 +139,16 @@ $ knife zero converge "chef_environment:production" --attribute knife_zero.host
 
 # specified run-list
 $ knife zero converge "name:*" --attribute knife_zero.host --override-runlist "role[patch]"
+```
+
+`--client-version` usage.
+
+```
+# Upgrade chef-client to latest and converge all Nodes
+$ knife zero converge "name:*" --attribute knife_zero.host --client-version latest
+
+# install specific version (e.g. 12.4.3) and converge all Nodes
+$ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4.3
 ```
 
 
