@@ -6,7 +6,7 @@ title: Subcommands
 
 各サブコマンドで指定できるオプションは`knife zero SUBCOMMAND --help`で確認できます。
 
-## [zero bootstrap](#bootstrap)
+## <a name="bootstrap">[zero bootstrap](#bootstrap)</a>
 
 `knife zero bootstrap FQDN (options)`
 
@@ -103,7 +103,7 @@ $ parallel -j 5 knife zero bootstrap ::: nodeA nodeB nodeC...
 ```
 
 
-## [zero converge](#converge)
+## <a name="converge">[zero converge](#converge)</a>
 
 `knife zero converge QUERY (options)`
 
@@ -163,7 +163,7 @@ $ knife zero converge "name:*" --attribute knife_zero.host --client-version late
 $ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4.3
 ```
 
-## [zero diagnose](#diagnose)
+## <a name="diagnose">[zero diagnose](#diagnose)</a>
 
 knife.rbから生成される設定を大まかに出力します。特にオプションはありません。
 設定内容の確認やバグ報告に使います。

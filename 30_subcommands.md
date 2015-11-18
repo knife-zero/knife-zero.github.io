@@ -6,7 +6,7 @@ title: Subcommands
 
 Options that can be specified in each sub-command can be found in `knife zero SUBCOMMAND --help`.
 
-## [zero bootstrap](#bootstrap)
+## <a name="bootstrap">[zero bootstrap](#bootstrap)</a>
 
 `knife zero bootstrap FQDN (options)`
 
@@ -93,7 +93,7 @@ Bootstrap multi-nodes via GNU Parallel.
 $ parallel -j 5 knife zero bootstrap ::: nodeA nodeB nodeC...
 ```
 
-## [zero converge](#converge)
+## <a name="converge">[zero converge](#converge)</a>
 
 `knife zero converge QUERY (options)`
 
@@ -152,7 +152,7 @@ $ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4
 ```
 
 
-## [zero diagnose](#diagnose)
+## <a name="diagnose">[zero diagnose](#diagnose)</a>
 
 It will roughly output settings that are generated from knife.rb. There is no option.
 
