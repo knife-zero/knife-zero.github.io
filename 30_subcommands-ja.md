@@ -163,6 +163,10 @@ $ knife zero converge "name:*" --attribute knife_zero.host --client-version late
 $ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4.3
 ```
 
+> Note:  
+> Chefのオムニバスインストーラを使いたくない場合は`--client-version`は役に立ちません。  
+> 自前でやるなら`knife ssh`で好きなコマンドを流してくればよいです。
+
 ## <a name="diagnose">[zero diagnose](#diagnose)</a>
 
 knife.rbから生成される設定を大まかに出力します。特にオプションはありません。

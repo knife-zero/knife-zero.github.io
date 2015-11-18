@@ -151,6 +151,9 @@ $ knife zero converge "name:*" --attribute knife_zero.host --client-version late
 $ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4.3
 ```
 
+> Note:  
+> If you don't want to use omnibus-chef installation, you should not use `--client-version` option.  
+> Try run your specified command to upgrade chef-client as you like via `knife ssh`.
 
 ## <a name="diagnose">[zero diagnose](#diagnose)</a>
 
