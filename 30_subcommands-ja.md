@@ -161,6 +161,9 @@ $ knife zero converge "name:*" --attribute knife_zero.host --client-version late
 
 # chef-clientを実行する前に、12.4.3をインストール。
 $ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4.3
+
+# chef-clientはwhy-runで実行し、変更はしない。
+$ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4.3 --why-run
 ```
 
 > Note:  

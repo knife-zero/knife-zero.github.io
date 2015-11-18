@@ -149,6 +149,9 @@ $ knife zero converge "name:*" --attribute knife_zero.host --client-version late
 
 # install specific version (e.g. 12.4.3) and converge all Nodes
 $ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4.3
+
+# Without converge
+$ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4.3 --why-run
 ```
 
 > Note:  
