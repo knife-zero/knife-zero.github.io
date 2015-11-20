@@ -67,9 +67,23 @@ cookbook_path File.expand_path("../cookbooks", __FILE__),
 
 `berks verify`を組み込むといいかもしれまん。
 
+### 小手先のインテグレーション
+
+設定ファイルの`knife.rb` はRubyで記述します。  
+例えば毎回`knife zero converge`の前に割り込ませて`berks vendor`を実行するには次のように記述することもできます。
+
+```
+## ローカルモードではknife.rb は2度読み込まれます。
+## まずはChef-Zeroの起動時、次にknifeが実行される時です。
+## Chef-Zeroの設定には`color`のキーが無いので、かろうじて判別つきます。
+if ARGV[0..1] == ["zero", "converge"] && ! Chef::Config.has_key?(:color)
+  system('bundle exec berks vendor')
+end
+```
+
 ## [Batali](https://github.com/hw-labs/batali)
 
-Berkshelfとほぼ一緒です。
+Berkshelfとほぼ一緒です。コマンドは`batali install`で読みかえます。
 
 ## Policyfile
 

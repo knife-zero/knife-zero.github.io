@@ -65,9 +65,22 @@ But in this way for loose integration with  Berksfile, please attention to the c
 
 To check current cookbooks, try `berks verify`.
 
+### cheap trick to hook.
+
+For example add below lines to `knife.rb`.  
+It will run `berks vendor` before every `knife zero converge`.
+
+```
+## knife.rb will be read twice at run. (before launch chef-zero locally and before run knife.)
+## And configuration for chef-zero doesn't has key `color`.
+if ARGV[0..1] == ["zero", "converge"] && ! Chef::Config.has_key?(:color)
+  system('bundle exec berks vendor')
+end
+```
+
 ## [Batali](https://github.com/hw-labs/batali)
 
-That is mostly the same as Berkshelf.
+That is mostly the same as Berkshelf.  Use `batali install`.
 
 ## Policyfile
 
