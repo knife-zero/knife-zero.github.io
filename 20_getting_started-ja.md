@@ -40,21 +40,21 @@ knife[:use_sudo] = true
 ## Nodeの各種属性(attributes)はローカルにJSONファイルとして保存されていきます。
 ## automatic_attribute_whitelist オプションは、Nodeから収集したAttributeのうち、保存する対象を絞ることができます。
 ## NodeもGitで管理する場合は、現状に依存するディスク使用量などは無視してよいでしょう。
-knife[:automatic_attribute_whitelist] = [
-  "fqdn/",
-  "os/",
-  "os_version/",
-  "hostname",
-  "ipaddress/",
-  "roles/",
-  "recipes/",
-  "ipaddress/",
-  "platform/",
-  "platform_version/",
-  "platform_version/",
-  "cloud/",
-  "cloud_v2/",
-  "chef_packages/"
+knife[:automatic_attribute_whitelist] = %w[
+  fqdn
+  os
+  os_version
+  hostname
+  ipaddress
+  roles
+  recipes
+  ipaddress
+  platform
+  platform_version
+  platform_version
+  cloud
+  cloud_v2
+  chef_packages
 ]
 ```
 
@@ -82,7 +82,7 @@ Connecting to 153.120.97.132
 153.120.97.132 Compiling Cookbooks...
 153.120.97.132 WARN: Node server1 has an empty run list.
 153.120.97.132 Converging 0 resources
-153.120.97.132 
+153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
 153.120.97.132 Chef Client finished, 0/0 resources updated in 1.935799462 seconds
@@ -111,7 +111,7 @@ BootstrapしたサーバのNodeオブジェクトは`./nodes/`以下に作成し
 knifeコマンドでこれらを管理することができます。
 
 ```
-$ ls nodes/server1.json 
+$ ls nodes/server1.json
 nodes/server1.json
 
 
@@ -282,7 +282,7 @@ $ knife zero converge "name:*" --ssh-user ubuntu
 153.120.97.132 Converging 0 resources
 153.120.97.132 WARN: Could not find whitelist attribute fqdn/.
 153.120.97.132 WARN: Could not find whitelist attribute cloud/.
-153.120.97.132 
+153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
 153.120.97.132 Chef Client finished, 0/0 resources updated in 1.612886172 seconds
@@ -293,7 +293,7 @@ $ knife zero converge "name:*" --ssh-user ubuntu
 153.120.97.133 Converging 0 resources
 153.120.97.133 WARN: Could not find whitelist attribute fqdn/.
 153.120.97.133 WARN: Could not find whitelist attribute cloud/.
-153.120.97.133 
+153.120.97.133
 153.120.97.133 Running handlers:
 153.120.97.133 Running handlers complete
 153.120.97.133 Chef Client finished, 0/0 resources updated in 1.970427916 seconds
@@ -352,7 +352,7 @@ $ knife zero converge "name:develop-server" --ssh-user ubuntu --override-runlist
 153.120.97.132     @@ -1 +1,2 @@
 153.120.97.132     +_default
 153.120.97.132 WARN: Skipping final node save because override_runlist was given
-153.120.97.132 
+153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
 153.120.97.132 Chef Client finished, 1/1 resources updated in 1.712681794 seconds
@@ -361,7 +361,7 @@ $ knife zero converge "name:develop-server" --ssh-user ubuntu --override-runlist
 サーバ上にファイルができましたね。
 
 ```
-(server1)$ cat /tmp/myenvironment 
+(server1)$ cat /tmp/myenvironment
 _default
 ```
 
@@ -389,7 +389,7 @@ $ knife node run_list add develop-server create_file
 develop-server:
   run_list: recipe[create_file]
 
-$ knife node show develop-server 
+$ knife node show develop-server
 Node Name:   develop-server
 Environment: _default
 FQDN:        
@@ -416,7 +416,7 @@ $ knife zero converge "name:develop-server" -x ubuntu
 153.120.97.132   * file[/tmp/myenvironment] action create (up to date)
 153.120.97.132 WARN: Could not find whitelist attribute fqdn/.
 153.120.97.132 WARN: Could not find whitelist attribute cloud/.
-153.120.97.132 
+153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
 153.120.97.132 Chef Client finished, 0/1 resources updated in 1.852618101 seconds
@@ -510,7 +510,7 @@ $ knife zero converge "chef_environment:*" -x ubuntu
 153.120.97.132     +development
 153.120.97.132 WARN: Could not find whitelist attribute fqdn/.
 153.120.97.132 WARN: Could not find whitelist attribute cloud/.
-153.120.97.132 
+153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
 153.120.97.132 Chef Client finished, 1/1 resources updated in 1.953228699 seconds
@@ -529,7 +529,7 @@ $ knife zero converge "chef_environment:*" -x ubuntu
 153.120.97.133     +production
 153.120.97.133 WARN: Could not find whitelist attribute fqdn/.
 153.120.97.133 WARN: Could not find whitelist attribute cloud/.
-153.120.97.133 
+153.120.97.133
 153.120.97.133 Running handlers:
 153.120.97.133 Running handlers complete
 153.120.97.133 Chef Client finished, 1/1 resources updated in 2.218201444 seconds
