@@ -15,23 +15,23 @@ cookbook_path    [ File.expand_path('../cookbooks' , __FILE__), File.expand_path
 
 knife[:ssh_attribute] = "knife_zero.host"
 knife[:use_sudo] = true
-knife[:identity_file] = "PATH_TO_YOUR_PUBLIC_KEY"
+knife[:identity_file] = "PATH_TO_YOUR_PRIVATE_KEY"
 
-knife[:automatic_attribute_whitelist] = [
-  "fqdn/",
-  "os/",
-  "os_version/",
-  "hostname",
-  "ipaddress/",
-  "roles/",
-  "recipes/",
-  "ipaddress/",
-  "platform/",
-  "platform_version/",
-  "platform_version/",
-  "cloud/",
-  "cloud_v2/",
-  "chef_packages/"
+knife[:automatic_attribute_whitelist] = %w[
+  fqdn
+  os
+  os_version
+  hostname
+  ipaddress
+  roles
+  recipes
+  ipaddress
+  platform
+  platform_version
+  platform_version
+  cloud
+  cloud_v2
+  chef_packages
 ]
 ```
 
@@ -45,24 +45,24 @@ knife[:automatic_attribute_whitelist] = [
 たとえばEC2のインスタンスで使う時のオススメ設定。
 
 ```ruby
-knife[:automatic_attribute_whitelist] = [
-  "fqdn/",
-  "os/",
-  "os_version/",
-  "hostname",
-  "ipaddress/",
-  "roles/",
-  "recipes/",
-  "ipaddress/",
-  "platform/",
-  "platform_version/",
-  "platform_version/",
-  "cloud/",
-  "cloud_v2/",
-  "ec2/ami_id/",
-  "ec2/instance_id/",
-  "ec2/instance_type/",
-  "ec2/placement_availability_zone/",
-  "chef_packages/"
+knife[:automatic_attribute_whitelist] = %w[
+  fqdn
+  os
+  os_version
+  hostname
+  ipaddress
+  roles
+  recipes
+  ipaddress
+  platform
+  platform_version
+  platform_version
+  cloud
+  cloud_v2
+  ec2/ami_id
+  ec2/instance_id
+  ec2/instance_type
+  ec2/placement_availability_zone
+  chef_packages
 ]
 ```

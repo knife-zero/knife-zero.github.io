@@ -37,21 +37,21 @@ knife[:use_sudo] = true
 
 ## Attributes of node objects will be saved to json file.
 ## the automatic_attribute_whitelist option limits the attributes to be saved.
-knife[:automatic_attribute_whitelist] = [
-  "fqdn/",
-  "os/",
-  "os_version/",
-  "hostname",
-  "ipaddress/",
-  "roles/",
-  "recipes/",
-  "ipaddress/",
-  "platform/",
-  "platform_version/",
-  "platform_version/",
-  "cloud/",
-  "cloud_v2/",
-  "chef_packages/"
+knife[:automatic_attribute_whitelist] = %w[
+  fqdn
+  os
+  os_version
+  hostname
+  ipaddress
+  roles
+  recipes
+  ipaddress
+  platform
+  platform_version
+  platform_version
+  cloud
+  cloud_v2
+  chef_packages
 ]
 ```
 
@@ -79,7 +79,7 @@ Connecting to 153.120.97.132
 153.120.97.132 Compiling Cookbooks...
 153.120.97.132 WARN: Node server1 has an empty run list.
 153.120.97.132 Converging 0 resources
-153.120.97.132 
+153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
 153.120.97.132 Chef Client finished, 0/0 resources updated in 1.935799462 seconds
@@ -108,7 +108,7 @@ Node object will be created in `./nodes/` under current directory as json file.
 And, We can manage with knife command.
 
 ```
-$ ls nodes/server1.json 
+$ ls nodes/server1.json
 nodes/server1.json
 
 
@@ -261,7 +261,7 @@ Reading package lists... Done
 
 ### Converge
 
-Next, we can run chef-client on remote servers by `zero converge` without any changes. 
+Next, we can run chef-client on remote servers by `zero converge` without any changes.
 
 ```
 $ knife zero converge "name:*" --ssh-user ubuntu
@@ -276,7 +276,7 @@ $ knife zero converge "name:*" --ssh-user ubuntu
 153.120.97.132 Converging 0 resources
 153.120.97.132 WARN: Could not find whitelist attribute fqdn/.
 153.120.97.132 WARN: Could not find whitelist attribute cloud/.
-153.120.97.132 
+153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
 153.120.97.132 Chef Client finished, 0/0 resources updated in 1.612886172 seconds
@@ -287,13 +287,13 @@ $ knife zero converge "name:*" --ssh-user ubuntu
 153.120.97.133 Converging 0 resources
 153.120.97.133 WARN: Could not find whitelist attribute fqdn/.
 153.120.97.133 WARN: Could not find whitelist attribute cloud/.
-153.120.97.133 
+153.120.97.133
 153.120.97.133 Running handlers:
 153.120.97.133 Running handlers complete
 153.120.97.133 Chef Client finished, 0/0 resources updated in 1.970427916 seconds
 ```
 
-Now, we have prepared to manage by chef. 
+Now, we have prepared to manage by chef.
 
 > Note:  
 > Remember, we don't have to use recipes to manage servers.  
@@ -345,7 +345,7 @@ $ knife zero converge "name:develop-server" --ssh-user ubuntu --override-runlist
 153.120.97.132     @@ -1 +1,2 @@
 153.120.97.132     +_default
 153.120.97.132 WARN: Skipping final node save because override_runlist was given
-153.120.97.132 
+153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
 153.120.97.132 Chef Client finished, 1/1 resources updated in 1.712681794 seconds
@@ -354,7 +354,7 @@ $ knife zero converge "name:develop-server" --ssh-user ubuntu --override-runlist
 It creates file on remote server.
 
 ```
-(server1)$ cat /tmp/myenvironment 
+(server1)$ cat /tmp/myenvironment
 _default
 ```
 
@@ -382,7 +382,7 @@ $ knife node run_list add develop-server create_file
 develop-server:
   run_list: recipe[create_file]
 
-$ knife node show develop-server 
+$ knife node show develop-server
 Node Name:   develop-server
 Environment: _default
 FQDN:        
@@ -409,13 +409,13 @@ $ knife zero converge "name:develop-server" -x ubuntu
 153.120.97.132   * file[/tmp/myenvironment] action create (up to date)
 153.120.97.132 WARN: Could not find whitelist attribute fqdn/.
 153.120.97.132 WARN: Could not find whitelist attribute cloud/.
-153.120.97.132 
+153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
 153.120.97.132 Chef Client finished, 0/1 resources updated in 1.852618101 seconds
 ```
 
-Managing nodes with knife-zero workflow is almost same as Chef-Server and Client usage. Please see official document to learn more. 
+Managing nodes with knife-zero workflow is almost same as Chef-Server and Client usage. Please see official document to learn more.
 
 - [knife node — Chef Docs](https://docs.chef.io/knife_node.html "knife node — Chef Docs")
 
@@ -501,7 +501,7 @@ $ knife zero converge "chef_environment:*" -x ubuntu
 153.120.97.132     +development
 153.120.97.132 WARN: Could not find whitelist attribute fqdn/.
 153.120.97.132 WARN: Could not find whitelist attribute cloud/.
-153.120.97.132 
+153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
 153.120.97.132 Chef Client finished, 1/1 resources updated in 1.953228699 seconds
@@ -520,13 +520,13 @@ $ knife zero converge "chef_environment:*" -x ubuntu
 153.120.97.133     +production
 153.120.97.133 WARN: Could not find whitelist attribute fqdn/.
 153.120.97.133 WARN: Could not find whitelist attribute cloud/.
-153.120.97.133 
+153.120.97.133
 153.120.97.133 Running handlers:
 153.120.97.133 Running handlers complete
 153.120.97.133 Chef Client finished, 1/1 resources updated in 2.218201444 seconds
 ```
 
-Were you able to do? 
+Were you able to do?
 
 If there is that if you are in trouble, First, let's check the official document. Again, Knife-Zero is the same as the Chef-Server environment.
 
@@ -535,4 +535,3 @@ If there is that if you are in trouble, First, let's check the official document
 Or, you can create issue an pull request to knife-zero, or visit chat.
 
 - [higanworks/knife-zero | Github](https://github.com/higanworks/knife-zero "higanworks/knife-zero")
-
