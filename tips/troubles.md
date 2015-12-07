@@ -7,8 +7,6 @@ permalink: tips/troubles/
 
 ## I met `Chef::Exceptions::ContentLengthMismatch: Response body length` when bootstrap/converge.
 
-The cause is unknown yet. But, there is a probability to solve by deleting /var/chef/cache.
-
-[knife-zero/issues/#69](https://github.com/higanworks/knife-zero/issues/69)
-
+The net-ssh 2.9.2 (and older) will immediately send a CHANNEL_CLOSE even though there is still pending data in the output buffer.  
+And this issue was fixed and already backported into branch `2.9-release`.
 
