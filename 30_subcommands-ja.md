@@ -8,7 +8,7 @@ title: Subcommands
 
 ## <a name="bootstrap">[zero bootstrap](#bootstrap)</a>
 
-`knife zero bootstrap FQDN (options)`
+`knife zero bootstrap [SSH_USER@]FQDN (options)`
 
 リモートNodeの初期化を行います、次の機能をもちます。
 
@@ -68,6 +68,10 @@ $ knife zero bootstrap 210.152.xxx.xxx --name zero01
 
 # SSHに使用するログイン名がubuntuで、sudoが必要
 $ knife zero bootstrap 210.152.xxx.xxx --name zero01 -x ubuntu --sudo
+
+または
+
+$ knife zero bootstrap ubuntu@210.152.xxx.xxx --name zero01 --sudo
 ```
 
 初回のChef-Client実行時にNormal Attributeを付与する。

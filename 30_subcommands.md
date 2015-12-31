@@ -8,7 +8,7 @@ Options that can be specified in each sub-command can be found in `knife zero SU
 
 ## <a name="bootstrap">[zero bootstrap](#bootstrap)</a>
 
-`knife zero bootstrap FQDN (options)`
+`knife zero bootstrap [SSH_USER@]FQDN (options)`
 
 Initializes the remote Node, it has the following features.
 
@@ -59,6 +59,10 @@ $ knife zero bootstrap 210.152.xxx.xxx --name zero01
 
 # The login name to connect via SSH is ubuntu, and sudo is necessary
 $ knife zero bootstrap 210.152.xxx.xxx --name zero01 -x ubuntu --sudo
+
+OR
+
+$ knife zero bootstrap ubuntu@210.152.xxx.xxx --name zero01 --sudo
 ```
 
 It will grant the Normal Attribute at the time of the first Chef-Client run.
