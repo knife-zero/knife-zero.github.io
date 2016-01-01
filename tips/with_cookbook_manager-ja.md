@@ -5,9 +5,37 @@ title: Cookbookマネージャと一緒に
 permalink: tips/with_cookbook_manager-ja/
 ---
 
-この項目内では3rdパーティーのCookbookをマネージャで管理して、自家製のCookbookを`CHEF_REPO/site-cookbooks`に設置する前提にしています。
+この項目内では3rdパーティーおよび自家製のCookbookの両方をマネージャで管理する前提にしています。
 
-自家製CookbookもCookbookマネージャで管理している場合は、`CHEF_REPO/site-cookbooks`は不要です。
+## [Berkshelf](http://berkshelf.com)
+
+`berks vendor`コマンドを割り込みに指定します。
+
+```ruby
+coobook_path [
+  File.expand_path('../../berks-cookbooks', __FILE__)
+]
+
+knife[:before_bootstrap] = "berks vendor"
+knife[:before_converge]  = "berks vendor"
+
+## ex. under the bundler environment.
+# knife[:before_bootstrap] = "bundle/chef exec berks vendor"
+# knife[:before_converge]  = "bundle/chef exec berks vendor"
+```
+
+## [Batali](https://github.com/hw-labs/batali)
+
+Berkshelfとほぼ一緒です。コマンドは`batali update`で読みかえます。
+
+```ruby
+knife[:before_bootstrap] = "batali update"
+knife[:before_converge]  = "batali update"
+
+## ex. under the bundler environment.
+# knife[:before_bootstrap] = "bundle/chef exec batali vendor"
+# knife[:before_converge]  = "bundle/chef exec batali vendor"
+```
 
 ## [Librarian](https://github.com/applicationsonline/librarian-chef)
 
@@ -41,49 +69,6 @@ cookbook_path Librarian::Chef.install_path,
 - `librarian-chef install`
 - `librarian-chef clean`
 
-## [Berkshelf](http://berkshelf.com)
-
-`berks vendor`コマンドで`Berksfile`に記述されたCookbookを`cookbooks/`に収容します。
-
-```
-$ berks vendor cookbooks
-```
-
-`knife.rb`で`cookbook_path`を次のようにして下さい。
-
-```ruby
-cookbook_path File.expand_path("../cookbooks", __FILE__),
-              "/path/to/chef-repo/site-cookbooks")
-```
-
-例えば、Chef−Repoのルートに`knife.rb`を置いている環境なら次のように記述します。
-
-```ruby
-cookbook_path File.expand_path("../cookbooks", __FILE__),
-              File.expand_path("../site-cookbooks", __FILE__)
-```
-
-ただこの方法ではBerkshelfとの結合度はゆるいため、矛盾には注意しましょう。
-
-`berks verify`を組み込むといいかもしれまん。
-
-### 小手先のインテグレーション
-
-設定ファイルの`knife.rb` はRubyで記述します。  
-例えば毎回`knife zero converge`の前に割り込ませて`berks vendor`を実行するには次のように記述することもできます。
-
-```
-## ローカルモードではknife.rb は2度読み込まれます。
-## まずはChef-Zeroの起動時、次にknifeが実行される時です。
-## Chef-Zeroの設定には`color`のキーが無いので、かろうじて判別つきます。
-if ARGV[0..1] == ["zero", "converge"] && ! Chef::Config.has_key?(:color)
-  system('bundle exec berks vendor')
-end
-```
-
-## [Batali](https://github.com/hw-labs/batali)
-
-Berkshelfとほぼ一緒です。コマンドは`batali install`で読みかえます。
 
 ## Policyfile
 

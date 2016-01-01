@@ -66,3 +66,13 @@ knife[:automatic_attribute_whitelist] = %w[
   chef_packages
 ]
 ```
+
+- `knife[:before_bootstrap]`, `knife[:before_converge]`
+    - bootstrap/convergeを実行する直前に割り込みで実行するローカルコマンド。
+
+```ruby
+knife[:before_bootstrap] = 'logger "bootstrap start"'
+knife[:before_converge]  = 'logger "before_converge"'
+```
+
+exitステータスが0以外なら停止します。

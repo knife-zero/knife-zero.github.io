@@ -5,6 +5,37 @@ title: Cookbook Manager Integration
 permalink: tips/with_cookbook_manager/
 ---
 
+This usage assumes using cookbook manager to manage both 3rd parties cookbooks and self maintenance cookbooks.
+
+## [Berkshelf](http://berkshelf.com)
+
+Set `berks vendor` to hooks.
+
+```ruby
+coobook_path [
+  File.expand_path('../../berks-cookbooks', __FILE__)
+]
+
+knife[:before_bootstrap] = "berks vendor"
+knife[:before_converge]  = "berks vendor"
+
+## ex. under the bundler environment.
+# knife[:before_bootstrap] = "bundle/chef exec berks vendor"
+# knife[:before_converge]  = "bundle/chef exec berks vendor"
+```
+
+## [Batali](https://github.com/hw-labs/batali)
+
+That is mostly the same as Berkshelf.  Use `batali install`.
+
+```ruby
+knife[:before_bootstrap] = "batali update"
+knife[:before_converge]  = "batali update"
+
+## ex. under the bundler environment.
+# knife[:before_bootstrap] = "bundle/chef exec batali vendor"
+# knife[:before_converge]  = "bundle/chef exec batali vendor"
+```
 
 ## [Librarian](https://github.com/applicationsonline/librarian-chef)
 
@@ -38,49 +69,6 @@ When you see `Cheffile and Cheffile.lock are out of sync!`, you should correct d
 - `librarian-chef install`
 - `librarian-chef clean`
 
-
-## [Berkshelf](http://berkshelf.com)
-
-Resolve and download Cookbooks which are managed under Berksfile by `berks vendor` into `./cookbooks`.
-
-```
-$ berks vendor cookbooks
-```
-
-Stick the following in your knife.rb:
-
-```ruby
-cookbook_path File.expand_path("../cookbooks", __FILE__),
-              "/path/to/chef-repo/site-cookbooks")
-```
-
-For example. `knife.rb` in your chef_repo root.
-
-```ruby
-cookbook_path File.expand_path("../cookbooks", __FILE__),
-              File.expand_path("../site-cookbooks", __FILE__)
-```
-
-But in this way for loose integration with  Berksfile, please attention to the contradiction.
-
-To check current cookbooks, try `berks verify`.
-
-### cheap trick to hook.
-
-For example add below lines to `knife.rb`.  
-It will run `berks vendor` before every `knife zero converge`.
-
-```
-## knife.rb will be read twice at run. (before launch chef-zero locally and before run knife.)
-## And configuration for chef-zero doesn't has key `color`.
-if ARGV[0..1] == ["zero", "converge"] && ! Chef::Config.has_key?(:color)
-  system('bundle exec berks vendor')
-end
-```
-
-## [Batali](https://github.com/hw-labs/batali)
-
-That is mostly the same as Berkshelf.  Use `batali install`.
 
 ## Policyfile
 

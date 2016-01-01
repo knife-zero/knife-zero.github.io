@@ -65,3 +65,13 @@ knife[:automatic_attribute_whitelist] = %w[
   chef_packages
 ]
 ```
+
+- `knife[:before_bootstrap]`, `knife[:before_converge]`
+    - execute local command before bootstrap/converge.
+
+```ruby
+knife[:before_bootstrap] = 'logger "bootstrap start"'
+knife[:before_converge]  = 'logger "before_converge"'
+```
+
+Knife-Zero will stop when their exit status is not 0.
