@@ -174,6 +174,52 @@ $ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4
 > Chefのオムニバスインストーラを使いたくない場合は`--client-version`は役に立ちません。  
 > 自前でやるなら`knife ssh`で好きなコマンドを流してくればよいです。
 
+## <a name="apply">[zero apply](#apply)</a>
+
+`knife zero apply QUERY (options)` (※1.12.0で追加)
+
+BootstrapおよびChef-Client実行済み(Node情報収集ずみ)のNodeに対して、スポットで任意のレシピを[Chef-Apply](https://docs.chef.io/ctl_chef_apply.html)で実行します。  
+対象Nodeはクエリ結果で絞込みます。クエリの書式は[knife search](https://docs.chef.io/knife_search.html)の`SEARCH_QUERY`と同一です。
+
+レシピはChef-Applyに標準入力から渡されます。
+
+### Options(抜粋)
+
+Chef本体の[`knife ssh`](https://docs.chef.io/knife_ssh.html)、および`zero converge`からオプションを引き継いでいます。本体のバージョンにより、使えるオプションは変動します。
+
+`zero apply`で使用する主なオプションは次の通りです。
+
+- `-a, --attribute ATTR` (ChefCore)
+    - SSHの接続先として用いるattributeを指定します。
+    - デフォルトで使用されるホスト名(FQDNおよびName)が接続先として利用できない場合に使用します。
+    - なお、Knife-ZeroでBootstrapしたNodeでは、使用したホスト/IPアドレスを`knife_zero.host`として再利用できます。
+- `-r, --recipe Recipe String or @filename`
+    - レシピの文字列または、@付きでファイル名を渡します。
+- `-C, --concurrency NUM` (ChefCore)
+    - 対象が複数台ある際に、並行して実行する数を指定します。
+- `-W, --why-run`
+    - Chef-Applyの実行をWhy-Runモードで行います。
+- `--sudo/--no-sudo`
+    - リモートNodeでChef-Applyの実行にsudoを使います。
+- `--client-version [latest|VERSION]`
+    - リモートNodeでChef-Applyを実行する前に、任意のバージョンに変更します。
+    - この処理ではOmnibus-chefに含まれるRubyを使います。
+
+
+### Examples
+
+```
+# すべてのNodeにtmuxパッケージをインストール、文字列から
+$ knife zero apply "name:*" -r "package 'tmux'"
+
+# すべてのNodeのtmuxパッケージを更新、5Nodeずつ並行。
+$ knife zero apply "name:*" --attribute knife_zero.host --concurrency 5 -r "package 'tmux' do action :upgrade end"
+
+# すべてのNodeにファイルからレシピを実行
+$ knife zero apply "name:*" -r @apply/maintenance.rb
+```
+
+
 ## <a name="diagnose">[zero diagnose](#diagnose)</a>
 
 knife.rbから生成される設定を大まかに出力します。特にオプションはありません。

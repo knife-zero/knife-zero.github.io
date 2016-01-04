@@ -109,7 +109,7 @@ Target Nodes are based on the results of a search query. The query format is the
 Almost options are inheritance from [`knife ssh`](https://docs.chef.io/knife_ssh.html). Depending on the version of Chef, you can use options will vary.
 
 
-And options that you added in Knife-Zero, frequently asked option is is as follows.
+And options that we added in Knife-Zero, frequently asked option is as follows.
 
 - `-a, --attribute ATTR` (ChefCore)
     - The attribute to use for opening the connection
@@ -161,6 +161,55 @@ $ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4
 > Note:  
 > If you don't want to use omnibus-chef installation, you should not use `--client-version` option.  
 > Try run your specified command to upgrade chef-client as you like via `knife ssh`.
+
+## <a name="apply">[zero apply](#apply)</a>
+
+`knife zero apply QUERY (options)` (※ after v1.12.0)
+
+Run [Chef-Apply](https://docs.chef.io/ctl_chef_apply.html) to execute spot tasks for Node from a single recipe.
+Target Nodes are based on the results of a search query. The query format is the same as `SEARCH_QUERY` of [knife search](https://docs.chef.io/knife_search.html).
+
+The recipe string are passed to chef-apply from stdin.
+
+### Options(excerpted)
+
+Almost options are inheritance from [`knife ssh`](https://docs.chef.io/knife_ssh.html) and `zero converge`. Depending on the version of Chef, you can use options will vary.
+
+
+And options as follows.
+
+- `-a, --attribute ATTR` (ChefCore)
+    - The attribute to use for opening the connection
+    - If the Node was bootstrapped by Knife-Zero, you can reuse the host / IP address that you used `as knife_zero.host`.
+- `-r, --recipe Recipe String or @filename`
+- `-C, --concurrency NUM` (ChefCore)
+- `--remote-chef-zero-port`
+    - Listen port on remote to SSH Port Forwarding.
+    - Specify when TCP/18889 is being used by another service.
+- `-W, --why-run`
+    - Enable whyrun mode on chef-client run at remote node.
+- `-o, --override-runlist RunlistItem,RunlistItem`
+    - Replace current run list with specified items for a single run. 
+    - It skips save node.json on local
+- `--sudo/--no-sudo`
+- `--client-version [latest|VERSION]`
+    - Up or downgrade omnibus chef-client before converge.
+    - This option uses ruby which is included by omnibus-chef on node.
+
+
+### Examples
+
+```
+# Install tmux to all nodes from String.
+$ knife zero apply "name:*" -r "package 'tmux'"
+
+# Update tmux by all nodes from String. 
+$ knife zero apply "name:*" --attribute knife_zero.host --concurrency 5 -r "package 'tmux' do action :upgrade end"
+
+# Execute single recipe in all nodes from file.
+$ knife zero apply "name:*" -r @apply/maintenance.rb
+```
+
 
 ## <a name="diagnose">[zero diagnose](#diagnose)</a>
 

@@ -45,6 +45,10 @@ The `QUERY` used for choice of a node uses the search function of Chef. Please s
 
 Management of Node uses these 2 commands basically.
 
+In addition, `zero apply` run the Chef-Apply to run a single recipe via SSH.
+
+- [chef-apply (executable) — Chef Docs](https://docs.chef.io/ctl_chef_apply.html "chef-apply (executable) — Chef Docs")
+
 
 ### You can include Node Object to version control system.
 

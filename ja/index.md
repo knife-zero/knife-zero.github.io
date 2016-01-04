@@ -52,6 +52,10 @@ Knife-Zeroの使い方はほとんどChef-Server/Client環境の管理と変わ�
 
 基本的にはこの2つのコマンドでNodeを管理します。
 
+また、`zero apply`はスポットで単一のレシピを実行するChef-ApplyをSSH経由で実行します。
+
+- [chef-apply (executable) — Chef Docs](https://docs.chef.io/ctl_chef_apply.html "chef-apply (executable) — Chef Docs")
+
 
 ### Nodeオブジェクトも含めてバージョン管理
 
