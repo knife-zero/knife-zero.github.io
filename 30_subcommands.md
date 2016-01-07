@@ -196,6 +196,9 @@ And options as follows.
     - Up or downgrade omnibus chef-client before converge.
     - This option uses ruby which is included by omnibus-chef on node.
 
+chef-apply(12.6.0) does not have function to load the Node objects from Chef-Server.  
+Currently, I have created pull request to support this feature.
+
 
 ### Examples
 

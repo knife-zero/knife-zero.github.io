@@ -205,6 +205,9 @@ Chef本体の[`knife ssh`](https://docs.chef.io/knife_ssh.html)、および`zero
     - リモートNodeでChef-Applyを実行する前に、任意のバージョンに変更します。
     - この処理ではOmnibus-chefに含まれるRubyを使います。
 
+`zero apply`コマンド作成時のChef(12.6.0)では、chef-applyはChef-ServerからNodeオブジェクトをロードする手段がありません。  
+現在、対応できそうなコードを本体にプルリクエストしています。
+
 
 ### Examples
 
