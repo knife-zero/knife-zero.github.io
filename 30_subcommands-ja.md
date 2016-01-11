@@ -195,6 +195,9 @@ Chef本体の[`knife ssh`](https://docs.chef.io/knife_ssh.html)、および`zero
     - なお、Knife-ZeroでBootstrapしたNodeでは、使用したホスト/IPアドレスを`knife_zero.host`として再利用できます。
 - `-r, --recipe Recipe String or @filename`
     - レシピの文字列または、@付きでファイル名を渡します。
+- `-j, --json-attributes JSON_ATTRIBS`
+    - 追加するAttributeのJSONファイルかURLを指定します。
+    - 対象探索の起点はリモートノードです。
 - `-C, --concurrency NUM` (ChefCore)
     - 対象が複数台ある際に、並行して実行する数を指定します。
 - `-W, --why-run`
@@ -206,7 +209,7 @@ Chef本体の[`knife ssh`](https://docs.chef.io/knife_ssh.html)、および`zero
     - この処理ではOmnibus-chefに含まれるRubyを使います。
 
 `zero apply`コマンド作成時のChef(12.6.0)では、chef-applyはChef-ServerからNodeオブジェクトをロードする手段がありません。  
-現在、対応できそうなコードを本体にプルリクエストしています。
+あくまで限定的な利用に留め、ChefRepoの情報が必要ならば`converge`の`--override-runlist`を利用しましょう。
 
 
 ### Examples

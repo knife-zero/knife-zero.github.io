@@ -182,6 +182,8 @@ And options as follows.
     - The attribute to use for opening the connection
     - If the Node was bootstrapped by Knife-Zero, you can reuse the host / IP address that you used `as knife_zero.host`.
 - `-r, --recipe Recipe String or @filename`
+- `-j, --json-attributes JSON_ATTRIBS`
+    - Load attributes from a JSON file or URL (retrieves from the remote node)
 - `-C, --concurrency NUM` (ChefCore)
 - `--remote-chef-zero-port`
     - Listen port on remote to SSH Port Forwarding.
@@ -197,7 +199,7 @@ And options as follows.
     - This option uses ruby which is included by omnibus-chef on node.
 
 chef-apply(12.6.0) does not have function to load the Node objects from Chef-Server.  
-Currently, I have created pull request to support this feature.
+The bear in only limited use, please use the `--override-runlist` with `converge` if you need to retrieve objects from ChefRepo.
 
 
 ### Examples
