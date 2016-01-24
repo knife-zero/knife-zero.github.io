@@ -72,4 +72,4 @@ cookbook_path Librarian::Chef.install_path,
 
 ## Policyfile
 
-WIP
+[こちらです](/tips/with_policyfile-ja/)
