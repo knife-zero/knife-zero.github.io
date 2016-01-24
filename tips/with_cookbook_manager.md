@@ -72,4 +72,4 @@ When you see `Cheffile and Cheffile.lock are out of sync!`, you should correct d
 
 ## Policyfile
 
-WIP
+[Here](/tips/with_policyfile/)
