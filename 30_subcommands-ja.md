@@ -47,6 +47,8 @@ Knife-Zeroで追加したオプションと、よく聞かれるオプション�
 - `-W, --why-run`
     - Chef-Clientの実行をWhy-Runモードで行います。
     - Chefのインストール、設定変更までは実際に行われます。
+- `--appendix-config PATH`
+    - リモートノードの`client.rb`の最後に指定したファイルの内容を追加します。
 
 
 その他については`knife zero bootstrap --help`を参照してください。

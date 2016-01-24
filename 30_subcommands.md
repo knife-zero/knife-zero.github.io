@@ -38,6 +38,8 @@ And options that you added in Knife-Zero, frequently asked option is is as follo
 - `--sudo` (ChefCore)
 - `-W, --why-run`
     - Enable whyrun mode on chef-client run at remote node.
+- `--appendix-config PATH`
+    - Add the contents of the specified file to `client.rb` of the remote node.
 
 
 Please refer to the `knife zero bootstrap --help` for the other.
