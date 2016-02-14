@@ -9,7 +9,7 @@ If we want to use IPv6 address with bootstrapping and converge.
 
 We should use address syntax below.
 
-```
+```shell
 ## Enclosed in []
 $ knife zero bootstrap [::1]  -N v6vm -x vagrant -P vagrant --sudo
 
@@ -22,6 +22,6 @@ $ knife zero bootstrap fe80::a00:27ff:fe60:59e0%en0 -N v6vm -x vagrant -P vagran
 
 And I recommend to use `knife_zero.host` to ssh attribute.
 
-```
+```shell
 $ knife zero converge "name:v6vm" --attribute knife_zero.host -x vagrant -P vagrant --sudo
 ```

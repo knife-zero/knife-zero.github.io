@@ -29,6 +29,6 @@ chef_repo_path File.expand_path("../", __FILE__)
 
 JSONファイルは`.gitignore`に追加しておきましょう。
 
-```
+```shell
 /roles/*.json
 ```

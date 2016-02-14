@@ -7,7 +7,7 @@ permalink: tips/using_ipv6-ja/
 
 Knife-Zeroでのノート管理にIPv6のアドレスを使いたい場合は、だいたい次の書式でアドレスを指定します。
 
-```
+```shell
 ## []で囲む
 $ knife zero bootstrap [::1]  -N v6vm -x vagrant -P vagrant --sudo
 
@@ -20,6 +20,6 @@ $ knife zero bootstrap fe80::a00:27ff:fe60:59e0%en0 -N v6vm -x vagrant -P vagran
 
 この場合、`zero converge`で指定するアトリビュートは`knife_zero.host`にしましょう。
 
-```
+```shell
 $ knife zero converge "name:v6vm" --attribute knife_zero.host -x vagrant -P vagrant --sudo
 ```

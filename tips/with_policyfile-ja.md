@@ -57,7 +57,7 @@ policy_document_native_api false
 
 `zero bootstrap`では`--policy-name`を使用します。
 
-```
+```shell
 $ knife zero bootstrap HOST_NAME --policy-name POLICY_NAME -N NODE_NAME
 ```
 
@@ -84,13 +84,13 @@ deployment_group "build-local"
 
 `zero converge`は通常どおりです。
 
-```
+```shell
 $ knife zero converge "QUERY"
 ```
 
 また、`-n/--named-run-list`で`named runlist`を指定します。
 
-```
+```shell
 $ knife zero converge "QUERY" -n NAMED_RUNLIST
 ```
 
@@ -99,7 +99,7 @@ $ knife zero converge "QUERY" -n NAMED_RUNLIST
 
 Policyfileの更新を毎回確実に適用する場合は、`knife.rb`に次の内容を追記します。
 
-```
+```ruby
 knife[:before_bootstrap] = 'chef update && chef export ./ -f'
 knife[:before_converge]  = 'chef update && chef export ./ -f'
 ```

@@ -21,13 +21,13 @@ When testing knife-zero with vagrant, we should know that how vagrant networking
 
 Set local_mode as default to `knife.rb`.
 
-```
+```shell
 $ echo 'local_mode true' >> knife.rb
 ```
 
 Add host-only network to vagrant vm(strongly recommended).
 
-```
+```ruby
 Vagrant.configure(2) do |config|
   config.vm.box = "opscode-ubuntu-14.04"
   config.vm.network "private_network", ip: "192.168.33.10"
@@ -37,7 +37,7 @@ end
 
 Retrieve ssh-config.
 
-```
+```shell
 $ vagrant up
 $ vagrant ssh-config
 Host default
@@ -56,7 +56,7 @@ Host default
 
 Bootstrap with ssh options and `--sudo` to host-only address. And set ipaddress to name with `-N` option.
 
-```
+```shell
 $ ./bin/knife zero bootstrap 192.168.33.10 -i ./.vagrant/machines/default/virtualbox/private_key -N 192.168.33.10 -x vagrant --sudo
 
 WARN: No cookbooks directory found at or above current directory.  Assuming /Users/sawanoboriyu/worktemp/knife-zero-vagrant.
@@ -72,7 +72,7 @@ Run zero converge with `-a name` option.
 > Please use specific attribute until fix it.
 > I've already create PR for fix. Please wait for merge to use name attribute. https://github.com/chef/chef/pull/3195
 
-```
+```shell
 $ knife zero converge "name:*" -x vagrant -i ./.vagrant/machines/default/virtualbox/private_key --sudo -a name
 WARN: No cookbooks directory found at or above current directory.  Assuming /Users/sawanoboriyu/worktemp/knife-zero-vagrant.
 192.168.33.10 Starting Chef Client, version 12.0.3
@@ -92,7 +92,7 @@ WARN: No cookbooks directory found at or above current directory.  Assuming /Use
 
 Bootstrap with ssh options and `--sudo` to host-only address. 
 
-```
+```shell
 $ knife zero bootstrap 192.168.33.10 -i ./.vagrant/machines/default/virtualbox/private_key -x vagrant --sudo
 
 WARN: No cookbooks directory found at or above current directory.  Assuming /Users/sawanoboriyu/worktemp/knife-zero-vagrant.
@@ -113,7 +113,7 @@ The knife-zero creates `node.knife_zero.host` attribute when bootstrap.
 
 Run zero converge with `-a knife_zero.host` option.
 
-```
+```shell
 $ ./bin/knife zero converge "name:vagrant.vm" -x vagrant -i ./.vagrant/machines/default/virtualbox/private_key --sudo -a knife_zero.host
 
 192.168.33.10 Starting Chef Client, version 12.0.3

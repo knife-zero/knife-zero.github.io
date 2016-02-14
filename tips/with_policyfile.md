@@ -55,7 +55,7 @@ First, reflect the contents of the Policyfile to Chef-Repo.
 
 Use `--policy-name` with `zero bootstrap`.
 
-```
+```shell
 $ knife zero bootstrap HOST_NAME --policy-name POLICY_NAME -N NODE_NAME
 ```
 
@@ -82,13 +82,13 @@ deployment_group "build-local"
 
 There is no change to the `zero converge` normaly.
 
-```
+```shell
 $ knife zero converge "QUERY"
 ```
 
 You can `-n/--named-run-list` to use `named runlist`.
 
-```
+```shell
 $ knife zero converge "QUERY" -n NAMED_RUNLIST
 ```
 
@@ -97,7 +97,7 @@ $ knife zero converge "QUERY" -n NAMED_RUNLIST
 
 If you want to every time surely apply the update of Policyfile, you can append the following to the `knife.rb`.
 
-```
+```ruby
 knife[:before_bootstrap] = 'chef update && chef export ./ -f'
 knife[:before_converge]  = 'chef update && chef export ./ -f'
 ```

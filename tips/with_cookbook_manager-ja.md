@@ -43,7 +43,7 @@ knife[:before_converge]  = "batali update"
 
 Gemfileに`librarian-chef`を追加してbundleします。
 
-```
+```ruby
 gem 'knife-zero'
 gem 'librarian-chef'
 ```

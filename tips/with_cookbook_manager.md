@@ -43,7 +43,7 @@ Ref: [librarian-chef#knife-integration](https://github.com/applicationsonline/li
 
 Add `librarian-chef` to Gemfile, and bundle it.
 
-```
+```ruby
 gem 'knife-zero'
 gem 'librarian-chef'
 ```

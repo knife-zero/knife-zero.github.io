@@ -3,7 +3,11 @@ baseurl: ""
 
 # Dependencies
 markdown:         kramdown
-highlighter:      true
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+highlighter:      rouge
 
 # Permalinks
 permalink:        pretty
@@ -21,7 +25,7 @@ author:
   name:           'SAWANOBORI Yukihiko'
   url:            https://github.com/sawanoboly
 
-paginate:         5
+paginate:         null
 
 # Custom vars
 version:          1.8.x

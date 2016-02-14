@@ -16,7 +16,7 @@ Rubyの管理が不要、または共同で作業用のサーバを用意する�
 
 `chef gem`コマンドを使いましょう。
 
-```
+```shell
 $ chef gem install knife-zero
 ```
 
@@ -30,7 +30,7 @@ gem 'knife-zero'
 
 Bundleします。
 
-```
+```shell
 $ bundle
 ```
 
@@ -38,7 +38,7 @@ $ bundle
 
 Bundlerを使って、インストールするGemの関連ファイルをまとめる例を紹介します。
 
-```
+```shell
 $ bundle install --binstubs --path vendor/bundle
 ```
 
@@ -46,7 +46,7 @@ $ bundle install --binstubs --path vendor/bundle
 
 さっきのコマンドで次のようなツリーができます。
 
-```
+```shell
 $ tree . -L 5
 .
 ├── Gemfile
@@ -88,7 +88,7 @@ $ tree . -L 5
 
 こうしておくと`bundle exec`なしで実行できます。
 
-```
+```shell
 $ ./bin/chef-client -v
 Chef: 12.3.0
 

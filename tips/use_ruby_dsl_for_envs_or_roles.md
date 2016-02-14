@@ -29,6 +29,6 @@ Please keep in mind that this usage becomes the target outside of `knife edit` o
 
 I recommend to add JSON files to `.gitignore` when you use this little hack.
 
-```
+```shell
 /roles/*.json
 ```
