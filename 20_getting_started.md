@@ -534,4 +534,4 @@ If there is that if you are in trouble, First, let's check the official document
 
 Or, you can create issue an pull request to knife-zero, or visit chat.
 
-- [higanworks/knife-zero | Github](https://github.com/higanworks/knife-zero "higanworks/knife-zero")
+- [higanworks/knife-zero ... Github](https://github.com/higanworks/knife-zero "higanworks/knife-zero")

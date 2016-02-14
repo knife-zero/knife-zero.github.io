@@ -543,6 +543,6 @@ $ knife zero converge "chef_environment:*" -x ubuntu
 
 それか、Githubにイシュー(日本語歓迎)からはじめるとか、プルリクを送るとか。
 
-- [higanworks/knife-zero | Github](https://github.com/higanworks/knife-zero "higanworks/knife-zero")
+- [higanworks/knife-zero ... Github](https://github.com/higanworks/knife-zero "higanworks/knife-zero")
 
 また、Twitterで適当に言及しておけば、いつのまにかこのドキュメントが更新されていることもあります。
