@@ -16,6 +16,17 @@ Knife-Zero is plugin for [Chef](https://www.chef.io/).
 - You have only to manage one chef-repo.
 - Windows Server(Target) is not supported.
 
+## Development status of Knife-Zero
+
+It will be able to handle the Policyfile by used with Chef-DK v0.11 at Knife-Zero v1.14.  
+Incidentally, Chef-Vault is also supported already.
+The ability to provide of the Chef-Core is almost ready for use.
+
+So, maintenance policy for this project is currently as follows.
+
+- New Feature: Negative. No immediate plans.
+    - But it will be accepted at the request any time.
+- Compatibility: It will be kept supporting of the latest version of the Chef-Client.
 
 ## Introduction
 
