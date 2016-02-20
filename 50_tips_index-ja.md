@@ -14,6 +14,10 @@ title: Tips and Links
 
 Chef-DKの`chef generate`でいいと思うよ。
 
+## リモートノード上のキャッシュを消したい
+
+レシピで消したら良いと思うよ。
+
 ## Tips
 
 {% assign pages_list = site.pages %}

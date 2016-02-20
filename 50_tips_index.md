@@ -10,9 +10,16 @@ title: Tips and Links
 
 Yes, you can.
 
+
 ## Is there `knife zero init` ?
 
 Chef-DK have `chef generate`.
+
+
+## I would like to remove the cache of remote node.
+
+I think that we can remove by recipe.
+
 
 ## Tips
 
