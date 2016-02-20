@@ -4,6 +4,18 @@ lang: ja
 title: Tips and Links
 ---
 
+## FAQ
+
+### Chef-Vaultってつかえるんですか？
+
+つかえますよ。
+
+## `knife zero init` 無いの？
+
+Chef-DKの`chef generate`でいいと思うよ。
+
+## Tips
+
 {% assign pages_list = site.pages %}
 {% for node in pages_list %}
   {% if node.title != null %}

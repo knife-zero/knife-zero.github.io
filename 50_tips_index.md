@@ -4,6 +4,18 @@ lang: en
 title: Tips and Links
 ---
 
+## FAQ
+
+### Does Knife-zero works with Chef-Vault ?
+
+Yes, you can.
+
+## Is there `knife zero init` ?
+
+Chef-DK have `chef generate`.
+
+## Tips
+
 {% assign pages_list = site.pages %}
 {% for node in pages_list %}
   {% if node.title != null %}
