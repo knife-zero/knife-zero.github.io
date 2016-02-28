@@ -142,7 +142,7 @@ use_policyfile true
 versioned_cookbooks true
 policy_document_native_api true
 policy_name mypolicy
-policy_group mypolicy
+policy_group mygroup
 ```
 
 #### Converge
