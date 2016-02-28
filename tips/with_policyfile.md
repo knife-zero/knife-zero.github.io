@@ -5,32 +5,30 @@ title: Using Policyfile
 permalink: tips/with_policyfile/
 ---
 
-Knife-Zero supports Policyfile from version 1.13.0.
+Knife-Zero supports Policyfile.
 
 - [Policyfile](https://docs.chef.io/config_rb_policyfile.html)
 
 ## Requirements
 
-- chef-dk(chef command) required. to install it as below.
+- chef-dk(chef command) v0.11.0 or later required. to install it as below.
     - install knife-zero under chef-dk environment.
     - include chef-dk to your Gemfile.
-- With Chef-DK 0.11.0 or later.
-    - Need Knife-Zero 1.14.0 or later.
-    - Supports Native API.
-- Chef-DK 0.10.0以下の場合
-    - Need Knife-Zero 1.13.x.
-    - Not supports Native API.
 
-## Restrictions
+## Strategy
 
-If you are using a Policyfile at Knife-Zero, it has the following limitations.
+If you are using a Policyfile at Knife-Zero, select the usage from the following two.
 
-- One Policy that can be used simultaneously.
-- policy_group is fixed as `local`.
-- It can not be used with other Cookbook manager.
+- Use local policy which exported by `chef export`.
+    - It's simple.
+    - One Policy that can be used simultaneously.
+    - policy_group is fixed as `local`.
+- Use the same specifications as the Chef-Server with combination of `knife serve` and` chef push`.
+    - Operation is a little cumbersome.
+    - Supports multiple-policies and versioning.
 
 
-## Setup
+## Case: Use `chef export`.
 
 Add the following to `knife.rb`.
 
@@ -40,7 +38,7 @@ versioned_cookbooks true
 policy_document_native_api false
 ```
 
-## Workflow
+### Workflow
 
 First, reflect the contents of the Policyfile to Chef-Repo.
 
@@ -51,7 +49,7 @@ First, reflect the contents of the Policyfile to Chef-Repo.
     - `policies`
     - `policy_groups`
 
-### Bootstrap
+#### Bootstrap
 
 Use `--policy-name` with `zero bootstrap`.
 
@@ -65,20 +63,11 @@ For example, It'll add the following to `client.rb` when passed `--policy-name b
 use_policyfile true
 versioned_cookbooks true
 policy_document_native_api true
-policy_name "build"
-policy_group "local"
+policy_name build
+policy_group local
 ```
 
-When using Chef-DK is v0.10.0 and Knife-Zero is v1.13.x, below configurations are added to `client.rb`.
-
-```ruby
-use_policyfile true
-versioned_cookbooks true
-policy_document_native_api false
-deployment_group "build-local"
-```
-
-### Converge
+#### Converge
 
 There is no change to the `zero converge` normaly.
 
@@ -93,12 +82,77 @@ $ knife zero converge "QUERY" -n NAMED_RUNLIST
 ```
 
 
-## Tighter Integration
+### Tighter Integration
 
 If you want to every time surely apply the update of Policyfile, you can append the following to the `knife.rb`.
 
 ```ruby
 knife[:before_bootstrap] = 'chef update && chef export ./ -f'
 knife[:before_converge]  = 'chef update && chef export ./ -f'
+```
+
+## Case: Use combination of `knife serve` and` chef push`
+
+Add the following to `knife.rb`.
+
+```ruby
+use_policyfile true
+versioned_cookbooks true
+policy_document_native_api false
+chef_server_url "http://localhost:8889"  # for `chef push`
+```
+
+### Workflow
+
+First, launch a local Chef-Zero. It is necessary only when you manage policies by chef command, such as the `chef push` or `chef show-policy` or others.
+
+```shell
+$ knife serve
+Serving files from:
+repository at /Users/sawanoboriyu/worktemp/knife-zero_policy
+  Multiple versions per cookbook
+
+>> Starting Chef Zero (v4.5.0)...
+...
+```
+
+Open another terminal, then run `chef push` with specific group name.
+
+```shell
+$ chef push -c knife.rb mygroup policies/mypolicy.rb
+```
+
+After push, you should terminate `knife serve`.
+
+#### Bootstrap
+
+Use `--policy-name` and `--policy-group` with `zero bootstrap`.
+
+```shell
+$ knife zero bootstrap HOST_NAME --policy-name POLICY_NAME --policy-group POLICY_GROUP_NAME -N NODE_NAME
+```
+
+For example, It'll add the following to `client.rb` when passed `--policy-name mypolicy` and `--policy-group mygroup`.
+
+```ruby
+use_policyfile true
+versioned_cookbooks true
+policy_document_native_api true
+policy_name mypolicy
+policy_group mygroup
+```
+
+#### Converge
+
+There is no change to the `zero converge` normaly.
+
+```shell
+$ knife zero converge "QUERY"
+```
+
+You can `-n/--named-run-list` to use `named runlist`.
+
+```shell
+$ knife zero converge "QUERY" -n NAMED_RUNLIST
 ```
 
