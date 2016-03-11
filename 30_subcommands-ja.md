@@ -118,7 +118,7 @@ BootstrapおよびChef-Client実行済み(Node情報収集ずみ)のNodeに対�
 
 ### Options(抜粋)
 
-Chef本体の[`knife ssh`](https://docs.chef.io/knife_ssh.html)からオプションを引き継いでいます。本体のバージョンにより、使えるオプションは変動します。
+Chef本体の[`knife ssh`](https://docs.chef.io/knife_ssh.html)のほぼすべてと、[`chef-client`](https://docs.chef.io/ctl_chef_client.html)から一部のオプションを引き継いでいます。本体のバージョンにより、使えるオプションは変動します。
 
 Knife-Zeroで追加したオプションと、よく聞かれるオプションは次の通りです。
 
@@ -138,6 +138,12 @@ Knife-Zeroで追加したオプションと、よく聞かれるオプション�
     - このオプションを指定した場合、ローカルのNodeオブジェクトを更新しません。
 - `--sudo/--no-sudo`
     - リモートNodeでChef-Clientの実行にsudoを使います。
+- `--splay SECONDS` (Chef-Client)
+    - Chef-Client実行前にランダムで待ちを入れます。
+- `--skip-cookbook-sync`
+    - Use cached cookbooks without overwriting local differences from the server.
+    - Cookbookの同期フェーズをスキップして、(過去に)Node側に同期したものを使います。
+    - 単純にスキップするだけなので、例えば初回実行では指定してもエラーとなります。
 - `--client-version [latest|VERSION]`
     - リモートNodeでChef-Clientを実行する前に、任意のバージョンに変更します。
     - この処理ではOmnibus-chefに含まれるRubyを使います。

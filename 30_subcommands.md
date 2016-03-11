@@ -108,7 +108,8 @@ Target Nodes are based on the results of a search query. The query format is the
 
 ### Options(excerpted)
 
-Almost options are inheritance from [`knife ssh`](https://docs.chef.io/knife_ssh.html). Depending on the version of Chef, you can use options will vary.
+Almost options are inheritance from [`knife ssh`](https://docs.chef.io/knife_ssh.html). And, taken over some of the options from [`chef-client`](https://docs.chef.io/ctl_chef_client.html).
+ Depending on the version of Chef, you can use options will vary.
 
 
 And options that we added in Knife-Zero, frequently asked option is as follows.
@@ -126,6 +127,9 @@ And options that we added in Knife-Zero, frequently asked option is as follows.
     - Replace current run list with specified items for a single run. 
     - It skips save node.json on local
 - `--sudo/--no-sudo`
+- `--splay SECONDS`(Chef-Client)
+- `--skip-cookbook-sync`
+    - Use cached cookbooks without overwriting local differences from the server.
 - `--client-version [latest|VERSION]`
     - Up or downgrade omnibus chef-client before converge.
     - This option uses ruby which is included by omnibus-chef on node.
