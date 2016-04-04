@@ -15,3 +15,11 @@ Please update net-ssh to 2.9.4 or later. It's already fixed.
 NP. Please check [Validatorless Bootstraps | Chef Blog](https://www.chef.io/blog/2015/04/16/validatorless-bootstraps/).
 
 Knife-Zero always uses dummy validation_key. You can choose ignoring this message or using chef-vault.
+
+
+## I saw `Field 'policy_name' invalid error` .
+
+Probably, you have set the options that you do not use to configuration file (e.g. knife.rb). In most cases, it is the `validation_key`, it will been created by` knife configure`.
+
+Please remove unused options from configuration by refering [https://knife-zero.github.io/40_configuration/](https://knife-zero.github.io/40_configuration/).
+
