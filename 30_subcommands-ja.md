@@ -141,12 +141,16 @@ Knife-Zeroで追加したオプションと、よく聞かれるオプション�
 - `--splay SECONDS` (Chef-Client)
     - Chef-Client実行前にランダムで待ちを入れます。
 - `--skip-cookbook-sync`
-    - Use cached cookbooks without overwriting local differences from the server.
     - Cookbookの同期フェーズをスキップして、(過去に)Node側に同期したものを使います。
     - 単純にスキップするだけなので、例えば初回実行では指定してもエラーとなります。
 - `--client-version [latest|VERSION]`
     - リモートNodeでChef-Clientを実行する前に、任意のバージョンに変更します。
     - この処理ではOmnibus-chefに含まれるRubyを使います。
+- `-j, --json-attributes JSON_ATTRIBS`
+    - 一度だけ有効なAttributesのJSONをURL形式で指定します。
+    - JSONはワークステーションが取得し、SSH経由でリモートノードに転送します。
+    - スキーマを指定しない場合ローカルファイルパスが対象です。
+    - Nodeオブジェクト(ローカルのJSONファイル)を更新しないために、`--override-runlist`との併用を必須にしてあります。
 
 
 ### Examples
@@ -176,6 +180,13 @@ $ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4
 
 # chef-clientはwhy-runで実行し、変更はしない。
 $ knife zero converge "name:*" --attribute knife_zero.host --client-version 12.4.3 --why-run
+```
+
+`--json-attributes`の使い方。
+
+```
+# JSONからAttributesをロードして、一回だけのタスクを実行する。
+$ knife zero converge "name:*" --attribute knife_zero.host --json-attributes ./attrs/onetime.json --override-runlist 'role[onetime_task]'
 ```
 
 > Note:  

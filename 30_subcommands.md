@@ -133,6 +133,11 @@ And options that we added in Knife-Zero, frequently asked option is as follows.
 - `--client-version [latest|VERSION]`
     - Up or downgrade omnibus chef-client before converge.
     - This option uses ruby which is included by omnibus-chef on node.
+- `-j, --json-attributes JSON_ATTRIBS`
+    - Load attributes from a JSON file or URL.
+    - JSON will be get from a work station, and then transferred to the remote node via SSH.
+    - It will be try to get from local file path if you do not specify a schema.
+    - It must be use with `--override-runlist` because to avoid updating local node object.
 
 
 ### Examples
