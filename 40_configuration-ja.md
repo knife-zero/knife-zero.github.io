@@ -33,6 +33,13 @@ knife[:automatic_attribute_whitelist] = %w[
   cloud_v2
   chef_packages
 ]
+
+### Optional.
+## Cookbookやレシピで定義されたattributeを、認証情報や毎回値が変わるような動的情報を使っている際に使います。
+## nodeオブジェクトをバージョン管理したい際に役に立つでしょう。
+# knife[:default_attribute_whitelist] = []
+# knife[:normal_attribute_whitelist] = []
+# knife[:override_attribute_whitelist] = []
 ```
 
 
@@ -41,6 +48,10 @@ knife[:automatic_attribute_whitelist] = %w[
 - `knife[:automatic_attribute_whitelist]`
     - bootstrapおよびconvergeで収集するNodeの情報を抑制します。
     - 詳細はこちら。[Knife-Zeroで管理するnodeオブジェクトを任意のattributesに限定する](http://qiita.com/sawanoboly/items/28dfc22929b8fa961456)
+- `knife[:default_attribute_whitelist]`
+- `knife[:normal_attribute_whitelist]`
+- `knife[:override_attribute_whitelist]`
+    - 同上、 詳しくは [About Attributes#whitelist-attributes — Chef Docs](https://docs.chef.io/attributes.html#whitelist-attributes)
 
 たとえばEC2のインスタンスで使う時のオススメ設定。
 

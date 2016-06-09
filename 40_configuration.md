@@ -33,13 +33,26 @@ knife[:automatic_attribute_whitelist] = %w[
   cloud_v2
   chef_packages
 ]
+
+### Optional.
+## If you use attributes from cookbooks for set credentials or dynamic values.
+## This option is useful to managing node-objects which are managed under version controle systems(e.g git).
+# knife[:default_attribute_whitelist] = []
+# knife[:default_attribute_whitelist] = []
+# knife[:normal_attribute_whitelist] = []
+# knife[:override_attribute_whitelist] = []
 ```
 
 
 ## Knife-Zero specific configuration for `knife.rb`
 
 - `knife[:automatic_attribute_whitelist]`
-    - add attribute whitelist to `client.rb` which is put on remote Node.
+    - add automatic attribute whitelist to `client.rb` which is put on remote Node.
+    - preventing non-whitelisted attributes from being saved.
+- `knife[:default_attribute_whitelist]`
+- `knife[:normal_attribute_whitelist]`
+- `knife[:override_attribute_whitelist]`
+    - Ditto, see [About Attributes#whitelist-attributes — Chef Docs](https://docs.chef.io/attributes.html#whitelist-attributes)
 
 For example, on Amazon EC2 instance.
 
