@@ -28,7 +28,6 @@ knife[:automatic_attribute_whitelist] = %w[
   ipaddress
   platform
   platform_version
-  platform_version
   cloud
   cloud_v2
   chef_packages
@@ -37,7 +36,6 @@ knife[:automatic_attribute_whitelist] = %w[
 ### Optional.
 ## If you use attributes from cookbooks for set credentials or dynamic values.
 ## This option is useful to managing node-objects which are managed under version controle systems(e.g git).
-# knife[:default_attribute_whitelist] = []
 # knife[:default_attribute_whitelist] = []
 # knife[:normal_attribute_whitelist] = []
 # knife[:override_attribute_whitelist] = []
@@ -67,7 +65,6 @@ knife[:automatic_attribute_whitelist] = %w[
   recipes
   ipaddress
   platform
-  platform_version
   platform_version
   cloud
   cloud_v2
