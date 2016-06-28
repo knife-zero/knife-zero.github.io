@@ -40,6 +40,8 @@ And options that you added in Knife-Zero, frequently asked option is is as follo
     - Enable whyrun mode on chef-client run at remote node.
 - `--appendix-config PATH`
     - Add the contents of the specified file to `client.rb` of the remote node.
+- `--[no-]overwrite`
+    - Overwrite local node object if node already exist. false (ask) by default
 
 
 Please refer to the `knife zero bootstrap --help` for the other.
