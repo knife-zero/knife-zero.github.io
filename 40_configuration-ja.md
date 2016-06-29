@@ -28,7 +28,6 @@ knife[:automatic_attribute_whitelist] = %w[
   ipaddress
   platform
   platform_version
-  platform_version
   cloud
   cloud_v2
   chef_packages
@@ -66,7 +65,6 @@ knife[:automatic_attribute_whitelist] = %w[
   recipes
   ipaddress
   platform
-  platform_version
   platform_version
   cloud
   cloud_v2
