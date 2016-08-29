@@ -12,7 +12,7 @@ This usage assumes using cookbook manager to manage both 3rd parties cookbooks a
 Set `berks vendor` to hooks.
 
 ```ruby
-coobook_path [
+cookbook_path [
   File.expand_path('../../berks-cookbooks', __FILE__)
 ]
 
