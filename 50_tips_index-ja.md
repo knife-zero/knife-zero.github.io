@@ -18,6 +18,10 @@ Chef-DKの`chef generate`でいいと思うよ。
 
 レシピで消したら良いと思うよ。
 
+## リモートノードでchef-shellを動かしてレシピをデバッグしたい
+
+https://github.com/higanworks/knife-zero/issues/104
+
 ## Tips
 
 {% assign pages_list = site.pages %}
