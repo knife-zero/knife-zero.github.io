@@ -20,7 +20,7 @@ Chef-DKの`chef generate`でいいと思うよ。
 
 ## リモートノードでchef-shellを動かしてレシピをデバッグしたい
 
-https://github.com/higanworks/knife-zero/issues/104
+こちらを参照 [https://github.com/higanworks/knife-zero/issues/104](https://github.com/higanworks/knife-zero/issues/104)
 
 ## Tips
 

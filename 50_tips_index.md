@@ -22,7 +22,7 @@ I think that we can remove by recipe.
 
 ## Can I debug a recipe with chef-shell on the remote node?
 
-https://github.com/higanworks/knife-zero/issues/104
+See [https://github.com/higanworks/knife-zero/issues/104](https://github.com/higanworks/knife-zero/issues/104)
 
 
 ## Tips
