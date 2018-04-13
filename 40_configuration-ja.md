@@ -85,3 +85,21 @@ knife[:before_converge]  = 'logger "before_converge"'
 ```
 
 exitステータスが0以外なら停止します。
+
+## リモートノードのclient.rbに任意の内容を追加する
+
+`zero bootstrap` の `--appendix-config PATH` オプションを使用する例です。
+
+たとえば、リモート側Chef実行時のログレベルをデフォルトの`:warning`から`:error`に変更したい場合。
+
+`append.rb` など任意の名前で、次のファイルを用意します。
+
+```
+log_level :error
+```
+
+次のようにbootstrapを実行すると、リモートノードの`client.rb`末尾に`append.rb`の内容を追記します。
+
+```
+$ knife zero bootstrap --appendix-config ./append.rb ...(other options)
+```

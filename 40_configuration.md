@@ -85,3 +85,22 @@ knife[:before_converge]  = 'logger "before_converge"'
 ```
 
 Knife-Zero will stop when their exit status is not 0.
+
+
+## Add optional contents to client.rb on the remote node
+
+This is an example of using the `--appendix-config PATH` option of` zero bootstrap`.
+
+For example, if you want to change the log level during Chef execution on the remote node from the `:warning`(default) to `:error`.
+
+Prepare the following file with an arbitrary name such as `append.rb`.
+
+```
+log_level :error
+```
+
+Executing bootstrap as follows adds the contents of `append.rb` at the end of `client.rb` for the remote node.
+
+```
+$ knife zero bootstrap --appendix-config ./append.rb ...(other options)
+```
