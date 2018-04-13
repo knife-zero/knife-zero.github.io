@@ -1,0 +1,9 @@
+---
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.5
+    steps:
+      - checkout
+      - run: bundle exec jekyll build
