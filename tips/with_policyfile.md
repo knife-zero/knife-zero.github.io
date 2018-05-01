@@ -42,6 +42,9 @@ policy_document_native_api false
 
 First, reflect the contents of the Policyfile to Chef-Repo.
 
+> Notice: Executing `chef export ./ -f` empties the`. / Chef` directory and overwrites it.
+> recommended to put `knife.rb` and other configs to the project root directory.
+
 1. Run `chef install` or `chef update` to create `Policyfile.lock.json`.
 2. Run `chef export ./ -f` to update following directories in your Chef-Repo.
     - `cookbooks/`

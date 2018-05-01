@@ -43,12 +43,15 @@ policy_document_native_api true
 
 まずPolicyfileの内容をChef-Repoに反映します。
 
+> 注意: `chef export ./ -f` を実行すると `./chef`ディレクトリを空にして上書きします。
+> `knife.rb`などの設定ファイルはプロジェクトのルートディレクトリを使用することをおすすめします。
+
 1. `chef install` または `chef update`を実行し、`Policyfile.lock.json`を作成します。
 2. `chef export ./ -f`を実行し、以下のディレクトリを更新します。
-    - `cookbooks/`
-    - `data_bags/policyfiles/`
-    - `policies`
-    - `policy_groups`
+    - `.chef/`
+    - `cookbook_artifacts/`
+    - `policies/`
+    - `policy_groups/`
 
 #### Bootstrap
 
