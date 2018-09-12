@@ -51,6 +51,8 @@ knife[:automatic_attribute_whitelist] = %w[
 - `knife[:normal_attribute_whitelist]`
 - `knife[:override_attribute_whitelist]`
     - Ditto, see [About Attributes#whitelist-attributes — Chef Docs](https://docs.chef.io/attributes.html#whitelist-attributes)
+- `knife[:appendix_config]`
+  - Described later.
 
 For example, on Amazon EC2 instance.
 
@@ -103,4 +105,10 @@ Executing bootstrap as follows adds the contents of `append.rb` at the end of `c
 
 ```
 $ knife zero bootstrap --appendix-config ./append.rb ...(other options)
+```
+
+To set in `knfie.rb`, use `knife [:appendix_config]`.
+
+```
+knife[:appendix_config] = File.expand_path('clientrb_append.rb', __dir__)
 ```

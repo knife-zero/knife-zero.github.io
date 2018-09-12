@@ -51,6 +51,8 @@ knife[:automatic_attribute_whitelist] = %w[
 - `knife[:normal_attribute_whitelist]`
 - `knife[:override_attribute_whitelist]`
     - 同上、 詳しくは [About Attributes#whitelist-attributes — Chef Docs](https://docs.chef.io/attributes.html#whitelist-attributes)
+- `knife[:appendix_config]`
+  - 後述
 
 たとえばEC2のインスタンスで使う時のオススメ設定。
 
@@ -102,4 +104,10 @@ log_level :error
 
 ```
 $ knife zero bootstrap --appendix-config ./append.rb ...(other options)
+```
+
+`knfie.rb`に記述する場合は、`knife[:appendix_config]`です。
+
+```
+knife[:appendix_config] = File.expand_path('clientrb_append.rb', __dir__)
 ```
