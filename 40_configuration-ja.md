@@ -108,6 +108,8 @@ $ knife zero bootstrap --appendix-config ./append.rb ...(other options)
 
 `knfie.rb`に記述する場合は、`knife[:appendix_config]`です。
 
+こちらはファイルパスでなく、コンテンツそのものを指定します。
+
 ```
-knife[:appendix_config] = File.expand_path('clientrb_append.rb', __dir__)
+knife[:appendix_config] = File.read(File.expand_path('clientrb_append.rb', __dir__))
 ```
