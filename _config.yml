@@ -33,6 +33,9 @@ version:          1.8.x
 github:
   repo:  https://github.com/higanworks/knife-zero
 
+include:
+  - .well-known
+
 exclude:
   - CNAME
   - Gemfile
