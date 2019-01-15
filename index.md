@@ -18,7 +18,7 @@ Knife-Zero is plugin for [Chef](https://www.chef.io/).
 
 ## Development status of Knife-Zero
 
-It will be able to handle the Policyfile by used with Chef-DK v0.11 at Knife-Zero v1.14.  
+It will be able to handle the Policyfile by used with Chef-DK v0.11 at Knife-Zero v1.14.
 Incidentally, Chef-Vault is also supported already.
 The ability to provide of the Chef-Core is almost ready for use.
 
@@ -70,7 +70,11 @@ When you'd like also to manage a Node object by VCS(such as Git), use WhiteList.
 
 ## Which tool should I use?
 
-If you didn't have any nodes yet. And you'd like to manage there lifecycle as Code.  You can consider the [chef-provisioning](https://docs.chef.io/provisioning.html).
+If you just want to apply the recipe to the remote node, you can choose `chef-run`. It is included in the official tool set [Chef Workstation] (https://www.chef.sh/docs/chef-workstation/getting-started/).
+
+- [chef-run Guide](https://www.chef.sh/docs/chef-workstation/chef-run-users-guide/)
+
+If you didn't have any nodes yet. And you'd like to manage there lifecycle as Code (with tools which provided by Chef).  You can consider the [chef-provisioning](https://docs.chef.io/provisioning.html).
 `chef-provisioning` manages provisioning and updating ,disposing of nodes (Transfer of Chef-Repo is similar to Knife-Solo).
 And, `zero converge` of Knife-Zero can also be used in a updating of Nodes which are managed under `chef-provisioning`.
 

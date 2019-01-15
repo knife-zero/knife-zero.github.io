@@ -24,14 +24,14 @@ Chef-Serverの導入前につかってもよいし、Knife-Soloのように管�
 とりあえず日本語情報は[リンク集]({{ site.baseurl }}/50_tips_index-ja/#Links)を。
 
 > あと、Chef-ZeroとKnife-Zeroは別モンです。混同注意。
-> 
+>
 > - Chef-Zero: Chef社の軽量Chef-Server
-> 
+>
 > - Knife-Zero: ユーザが作ったChef-ZeroをSSH越しに使うプラグイン
 
 ## Knife-Zeroの開発状況
 
-Knife-Zero v1.14でChef-DK v0.11を併用するとPolicyfileを扱うことができるようになりました。  
+Knife-Zero v1.14でChef-DK v0.11を併用するとPolicyfileを扱うことができるようになりました。
 ついでにChef-Vaultも対応しているので、Chefのコアが提供する機能はほぼ使える状態です。
 
 ということで、このプロジェクトのメンテナンスポリシーは現在次の通りです。
@@ -74,7 +74,11 @@ NodeオブジェクトもGit等で管理したければ、WhiteListを使うと�
 
 ## どのツールをつかえばいいのか
 
-管理対象にするNodeを調達するところからコードで管理したいならば、まずは[chef-provisioning](https://docs.chef.io/provisioning.html)を検討します。
+ただリモートのノードにChefのレシピを適用したい、という場合は公式のツールセットである [Chef Workstation](https://www.chef.sh/docs/chef-workstation/getting-started/) に含まれる `chef-run` というのがあります。
+
+- [chef-run Guide](https://www.chef.sh/docs/chef-workstation/chef-run-users-guide/)
+
+管理対象にするNodeを調達するところから(Chef系統のツールと)コードで管理したいならば、[chef-provisioning](https://docs.chef.io/provisioning.html)を検討してもよいでしょう。
 
 `chef-provisioning`は調達、更新と廃棄を一元管理します(Chef-Repoの転送はKnife-Soloと似ています)。また、`chef-provisioning`の管理下でもNodeの更新にはKnife-Zeroの`zero converge`を併用できます。
 
