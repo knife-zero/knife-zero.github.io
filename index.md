@@ -70,7 +70,7 @@ When you'd like also to manage a Node object by VCS(such as Git), use WhiteList.
 
 ## Which tool should I use?
 
-If you just want to apply the recipe to the remote node, you can choose `chef-run`. It is included in the official tool set [Chef Workstation] (https://www.chef.sh/docs/chef-workstation/getting-started/).
+If you just want to apply the recipe to the remote node, you can choose `chef-run`. It is included in the official tool set [Chef Workstation](https://www.chef.sh/docs/chef-workstation/getting-started/).
 
 - [chef-run Guide](https://www.chef.sh/docs/chef-workstation/chef-run-users-guide/)
 
