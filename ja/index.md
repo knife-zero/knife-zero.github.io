@@ -78,10 +78,6 @@ NodeオブジェクトもGit等で管理したければ、WhiteListを使うと�
 
 - [chef-run Guide](https://www.chef.sh/docs/chef-workstation/chef-run-users-guide/)
 
-管理対象にするNodeを調達するところから(Chef系統のツールと)コードで管理したいならば、[chef-provisioning](https://docs.chef.io/provisioning.html)を検討してもよいでしょう。
-
-`chef-provisioning`は調達、更新と廃棄を一元管理します(Chef-Repoの転送はKnife-Soloと似ています)。また、`chef-provisioning`の管理下でもNodeの更新にはKnife-Zeroの`zero converge`を併用できます。
-
 既存、または他のツールでNodeを調達しているならば、Knife-Zeroは便利です。ローカルサーチが不要なら[Knife-Solo](http://matschaffer.github.io/knife-solo/)も選べます。
 
 ChefはしんどいけどRubyがいいなら[Itamae](http://itamae.kitchen/)もいいですよ。

@@ -74,10 +74,6 @@ If you just want to apply the recipe to the remote node, you can choose `chef-ru
 
 - [chef-run Guide](https://www.chef.sh/docs/chef-workstation/chef-run-users-guide/)
 
-If you didn't have any nodes yet. And you'd like to manage there lifecycle as Code (with tools which provided by Chef).  You can consider the [chef-provisioning](https://docs.chef.io/provisioning.html).
-`chef-provisioning` manages provisioning and updating ,disposing of nodes (Transfer of Chef-Repo is similar to Knife-Solo).
-And, `zero converge` of Knife-Zero can also be used in a updating of Nodes which are managed under `chef-provisioning`.
-
 When it's existence or Node is provisioned by other tools, Knife-Zero is convenient. If local search is unnecessary, [Knife-Solo](http://matschaffer.github.io/knife-solo/) can also be chosen.
 
 If you seem to hard about learning chef but love Ruby, You can consider the [Itamae](http://itamae.kitchen/).
