@@ -16,7 +16,8 @@ Knife-Zeroは[Chef](https://www.chef.io/)のプラグインです。特徴はだ
 
 ## はじめに
 
-まずKnife-Zeroは[Knife-Solo](http://matschaffer.github.io/knife-solo/)の乗り換え先ではありません。
+まずKnife-Zeroは[Knife-Solo](http://matschaffer.github.io/knife-solo/)の乗り換え先ではありません。 Knife-Soloからの乗り換えを考えているなら、[Chef-Run](https://www.chef.sh/docs/chef-workstation/chef-run-users-guide/)をおすすめします。
+
 Knife-ZeroはChef-Server/Client環境のサブセットであるローカルモードに、対象をリモートにできる機能を追加します。
 
 Chef-Serverの導入前につかってもよいし、Knife-Soloのように管理してもよし。Whitelistをうまくつくって、NodeオブジェクトをGitで管理してもOKです。
@@ -39,6 +40,11 @@ Knife-Zero v1.14でChef-DK v0.11を併用するとPolicyfileを扱うことが�
 - 新機能: 積極的に追加はしない。当面予定なし。
     - 要望はいつでも受け付けます。
 - 互換性: 最新版のChef-Clientを対象に維持。
+
+Knife-ZeroとChef Infra Client(Chef-Client)それぞれののバージョン対応は以下。
+
+- Knife-Zero 2.x or later: Chef Infra Client >= 15.x
+- Knife-Zero 1.x(開発終了): Chef Infra Client <> 15.x
 
 ## Knife-Zeroのワークフロー
 

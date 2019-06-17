@@ -28,12 +28,19 @@ So, maintenance policy for this project is currently as follows.
     - But it will be accepted at the request any time.
 - Compatibility: It will be kept supporting of the latest version of the Chef-Client.
 
+The version correspondence of Knife-Zero and Chef Infra Client (Chef-Client) is below.
+
+- Knife-Zero 2.x or later: Chef Infra Client >= 15.x
+- Knife-Zero 1.x (end of development): Chef Infra Client(Chef-Client) < 15.x
+
 ## Introduction
 
-First, Knife-Zero is not replacement of [Knife-Solo](http://matschaffer.github.io/knife-solo/).
+First, Knife-Zero is not replacement of [Knife-Solo](http://matschaffer.github.io/knife-solo/). The replacement from Knife-Solo is preferably [Chef-Run](https://www.chef.sh/docs/chef-workstation/chef-run-users-guide/), which is included in Chef WorkStation.
+
 Knife-Zero adds the function which can do a target remotely to the local_mode which is a subset of the Chef-Server/Client environment.
 
 It may be used before introduction of Chef-Server, or you may manage like Knife-Solo. Even if use with whitelist, you can manage Node objects in Git.
+
 
 ## Work with Knife-Zero
 
