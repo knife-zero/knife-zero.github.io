@@ -140,6 +140,10 @@ And options that we added in Knife-Zero, frequently asked option is as follows.
     - JSON will be get from a work station, and then transferred to the remote node via SSH.
     - It will be try to get from local file path if you do not specify a schema.
     - It must be use with `--override-runlist` because to avoid updating local node object.
+- `--chef-license ACCEPTANCE`
+    - Used with the `--client-version` option.
+    - ACCEPTANCE is selected from '`accept`', '`accept-no-persist`', or '`accept-silent`'.
+    - Use to update the remote Chef Infra Client to version 15 or later.
 
 
 ### Examples

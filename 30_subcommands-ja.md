@@ -154,7 +154,10 @@ Knife-Zeroで追加したオプションと、よく聞かれるオプション�
     - JSONはワークステーションが取得し、SSH経由でリモートノードに転送します。
     - スキーマを指定しない場合ローカルファイルパスが対象です。
     - Nodeオブジェクト(ローカルのJSONファイル)を更新しないために、`--override-runlist`との併用を必須にしてあります。
-
+- `--chef-license ACCEPTANCE`
+    - `--client-version` オプションと併用します。
+    - ACCEPTANCE は 'accept', 'accept-no-persist', または 'accept-silent' から選択。
+    - リモートのChef Infra Client を、15以降のバージョンに更新する際に使用します。
 
 ### Examples
 
