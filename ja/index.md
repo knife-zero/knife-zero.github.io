@@ -44,7 +44,7 @@ Knife-Zero v1.14でChef-DK v0.11を併用するとPolicyfileを扱うことが�
 Knife-ZeroとChef Infra Client(Chef-Client)それぞれののバージョン対応は以下。
 
 - Knife-Zero 2.x or later: Chef Infra Client >= 15.x
-- Knife-Zero 1.x(開発終了): Chef Infra Client <> 15.x
+- Knife-Zero 1.x(開発終了): Chef Infra Client < 15.x
 
 ## Knife-Zeroのワークフロー
 
