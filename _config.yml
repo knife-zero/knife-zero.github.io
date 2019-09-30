@@ -15,7 +15,7 @@ permalink:        pretty
 # Setup
 title:            Knife-Zero
 tagline:          'Local Mode via SSH.'
-description:      'Run chef-client at remote node with chef-zero(local-mode) via HTTP over SSH port fowarding. '
+description:      'Run chef-client/cinc-client at remote node with chef-zero(local-mode) via HTTP over SSH port fowarding. '
 url:              https://knife-zero.github.io
 
 gems:
