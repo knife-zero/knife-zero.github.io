@@ -22,3 +22,24 @@ Knife-Zeroは通常ダミーのvalidation_keyを使用します。このメッ�
 おそらく無関係のオプションを`knife.rb`などに設定している状態です。特に`knife configure`によって作られた`validation_key`をセットしている例が多いです。
 
 [https://knife-zero.github.io/40_configuration-ja/](https://knife-zero.github.io/40_configuration-ja/) を参考に、不要なオプションを削除してみてください。
+
+## 秘密鍵のエラー `ERROR: NotImplementedError: OpenSSH keys only supported if ED25519 is available` が出ます
+
+SSH接続用ライブラリ、net-sshではオプションとして対応形式を増やすことができるので、それを試してみてください。  
+native extensionsを含むので、いずれの方法もmakeやGCCなどのビルドツールが必要です。
+
+bundlerならGemfileに下記を追加。
+
+```
+gem 'rbnacl', '< 5.0', require: false
+gem 'rbnacl-libsodium', require: false
+gem 'bcrypt_pbkdf', '< 2.0', require: false
+```
+
+Chef-DK環境なら`chef gem install`で。
+
+```
+$ chef gem install rbnacl -v '< 5.0'
+$ chef gem install rbnacl-libsodium
+$ chef gem install bcrypt_pbkdf -v '< 2.0'
+```

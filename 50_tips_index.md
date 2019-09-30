@@ -24,26 +24,6 @@ I think that we can remove by recipe.
 
 See [https://github.com/higanworks/knife-zero/issues/104](https://github.com/higanworks/knife-zero/issues/104)
 
-### Private key error `ERROR: NotImplementedError: OpenSSH keys only supported if ED25519 is available`
-
-You can extend the number of supported formats as an option in the SSH connection library, net-ssh, so please try it.
-Since native extensions are included, both methods require build tools such as make and GCC.
-
-For bundler, add the following to Gemfile.
-
-```
-gem 'rbnacl', '< 5.0', require: false
-gem 'rbnacl-libsodium', require: false
-gem 'bcrypt_pbkdf', '< 2.0', require: false
-```
-
-For Chef-DK environment, use `chef gem install`.
-
-```
-$ chef gem install rbnacl -v '< 5.0'
-$ chef gem install rbnacl-libsodium
-$ chef gem install bcrypt_pbkdf -v '< 2.0'
-```
 
 ## Tips
 
