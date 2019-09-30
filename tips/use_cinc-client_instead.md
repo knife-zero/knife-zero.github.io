@@ -7,7 +7,7 @@ permalink: tips/use_cinc-client_instead/
 
 You can use the community build package version of Cnic-Client on remote nodes if you find it difficult to accept the license when you run Chef Infra Client for the first time or every time you upgrade.
 
-https://gitlab.com/cinc-project/client
+[https://gitlab.com/cinc-project/client](https://gitlab.com/cinc-project/client)
 
 > This information is as of October 2019, and the Cnic package project has just begun. The distribution method may be different from the current situation.
 

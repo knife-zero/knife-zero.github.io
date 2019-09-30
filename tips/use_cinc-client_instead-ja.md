@@ -7,7 +7,7 @@ permalink: tips/use_cinc-client_instead-ja/
 
 Chef Infra Clientの初回実行時や、バージョンアップのたびにライセンスに同意するオプションを付けるのが面倒な場合、リモートノードではコミュニティビルドパッケージ版のCnic-Clientを使うこともできます。
 
-https://gitlab.com/cinc-project/client
+[https://gitlab.com/cinc-project/client](https://gitlab.com/cinc-project/client)
 
 > この情報は2019年10月時点のもので、Cnicパッケージプロジェクトは始まったばかりです。配布の方法など現状とちがっているかもしれません。
 
