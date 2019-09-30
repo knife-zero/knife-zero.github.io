@@ -10,17 +10,40 @@ title: Tips and Links
 
 つかえますよ。
 
-## `knife zero init` 無いの？
+### `knife zero init` 無いの？
 
 Chef-DKの`chef generate`でいいと思うよ。
 
-## リモートノード上のキャッシュを消したい
+### リモートノード上のキャッシュを消したい
 
 レシピで消したら良いと思うよ。
 
-## リモートノードでchef-shellを動かしてレシピをデバッグしたい
+### リモートノードでchef-shellを動かしてレシピをデバッグしたい
 
 こちらを参照 [https://github.com/higanworks/knife-zero/issues/104](https://github.com/higanworks/knife-zero/issues/104)
+
+
+### 秘密鍵のエラー `ERROR: NotImplementedError: OpenSSH keys only supported if ED25519 is available` が出ます
+
+SSH接続用ライブラリ、net-sshではオプションとして対応形式を増やすことができるので、それを試してみてください。  
+native extensionsを含むので、いずれの方法もmakeやGCCなどのビルドツールが必要です。
+
+bundlerならGemfileに下記を追加。
+
+```
+gem 'rbnacl', '< 5.0', require: false
+gem 'rbnacl-libsodium', require: false
+gem 'bcrypt_pbkdf', '< 2.0', require: false
+```
+
+Chef-DK環境なら`chef gem install`で。
+
+```
+$ chef gem install rbnacl -v '< 5.0'
+$ chef gem install rbnacl-libsodium
+$ chef gem install bcrypt_pbkdf -v '< 2.0'
+```
+
 
 ## Tips
 
