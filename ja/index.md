@@ -46,6 +46,8 @@ Knife-ZeroとChef Infra Client(Chef-Client)それぞれののバージョン対�
 - Knife-Zero 2.x or later: Chef Infra Client >= 15.x
 - Knife-Zero 1.x(開発終了): Chef Infra Client < 15.x
 
+ほか、cinc-clientがただの別名義であるうちはサポートしてると思います。 => [cinc-client をつかいたい](/tips/use_cinc-client_instead-ja/)
+
 ## Knife-Zeroのワークフロー
 
 Knife-Zeroの使い方はほとんどChef-Server/Client環境の管理と変わりません。たいていは公式のドキュメントの解説が参考になるはずです。

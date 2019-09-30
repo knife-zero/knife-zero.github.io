@@ -33,6 +33,8 @@ The version correspondence of Knife-Zero and Chef Infra Client (Chef-Client) is 
 - Knife-Zero 2.x or later: Chef Infra Client >= 15.x
 - Knife-Zero 1.x (end of development): Chef Infra Client(Chef-Client) < 15.x
 
+Besides, I think that it supports while cinc-client is just another name.  => [Use cinc-client instead?](/tips/use_cinc-client_instead/)
+
 ## Introduction
 
 First, Knife-Zero is not replacement of [Knife-Solo](http://matschaffer.github.io/knife-solo/). The replacement from Knife-Solo is preferably [Chef-Run](https://www.chef.sh/docs/chef-workstation/chef-run-users-guide/), which is included in Chef WorkStation.
