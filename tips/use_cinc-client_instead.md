@@ -56,6 +56,15 @@ Platform:    ubuntu 16.04
 Tags:        
 ```
 
+To make this bootstrap configuration permanent in the configuration file (`knife.rb` or `config.rb`), you can write as follows.
+
+```ruby
+knife[:bootstrap_preinstall_command] = 'sudo ln -sf /usr/bin/cinc-client /usr/bin/chef-client && sudo mkdir -p /etc/cinc && sudo ln -sf /etc/cinc /etc/chef'
+CINC_VERSON = ENV['CINC_VERSON'] || '15.3.14-1'
+knife[:bootstrap_install_command] = "wget http://downloads.cinc.sh/files/stable/cinc/ubuntu/16.04/cinc_#{CINC_VERSON}_amd64.deb && sudo dpkg -i cinc_#{CINC_VERSON}_amd64.deb"
+```
+
+
 ## Change the version of cnic-client
 
 You can install any package version with `knife ssh`.
