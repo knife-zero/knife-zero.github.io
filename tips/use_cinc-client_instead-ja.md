@@ -92,7 +92,7 @@ $ knife ssh "name:my-ubuntu16" "sudo ln -sf /usr/bin/cinc-client /usr/bin/chef-c
 最後にバージョン変更とおなじように任意のパッケージを入れましょう
 
 ```shell
-$ knife ssh "name:my-ubuntu16" "wget http://downloads.cinc.sh/files/stable/cinc/ubuntu/16.04/cinc_15.3.14-1_amd64.deb && sudo dpkg -i cinc_15.3.14-1_amd64.deb && rm -f cinc_15.3.14-1_amd64.deb"
+$ knife ssh "name:my-ubuntu16" "wget -nv http://downloads.cinc.sh/files/stable/cinc/ubuntu/16.04/cinc_15.3.14-1_amd64.deb && sudo dpkg -i cinc_15.3.14-1_amd64.deb && rm -f cinc_15.3.14-1_amd64.deb"
 
 ...
 
