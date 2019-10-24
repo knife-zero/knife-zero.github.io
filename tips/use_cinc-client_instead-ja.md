@@ -5,13 +5,13 @@ title: cinc-client をつかいたい
 permalink: tips/use_cinc-client_instead-ja/
 ---
 
-Chef Infra Clientの初回実行時や、バージョンアップのたびにライセンスに同意するオプションを付けるのが面倒な場合、リモートノードではコミュニティビルドパッケージ版のCnic-Clientを使うこともできます。
+Chef Infra Clientの初回実行時や、バージョンアップのたびにライセンスに同意するオプションを付けるのが面倒な場合、リモートノードではコミュニティビルドパッケージ版のCinc-Clientを使うこともできます。
 
 [https://gitlab.com/cinc-project/client](https://gitlab.com/cinc-project/client)
 
-> この情報は2019年10月時点のもので、Cnicパッケージプロジェクトは始まったばかりです。配布の方法など現状とちがっているかもしれません。
+> この情報は2019年10月時点のもので、Cincパッケージプロジェクトは始まったばかりです。配布の方法など現状とちがっているかもしれません。
 
-`cnic-client`は`chef-client`からエントリーポイントと設定ディレクトリを`/etc/chef`から`/etc/cinc`に変更しただけのパッケージです。  
+`cinc-client`は`chef-client`からエントリーポイントと設定ディレクトリを`/etc/chef`から`/etc/cinc`に変更しただけのパッケージです。  
 そのため、下記2箇所をsymlinkでつないでしまえば、knife-zeroからみて全くおなじように扱うことができます。
 
 - `/usr/bin/chef-client` => `/usr/bin/cinc-client`
@@ -20,7 +20,7 @@ Chef Infra Clientの初回実行時や、バージョンアップのたびにラ
 
 ## bootstrap時からcinc-clientを使用する場合
 
-bootstrapにはもともと便利なオプションが用意されているので、それを使うだけでcnicをインストールすることができます。
+bootstrapにはもともと便利なオプションが用意されているので、それを使うだけでcincをインストールすることができます。
 
 パッケージは [http://downloads.cinc.sh](http://downloads.cinc.sh) で配布されています。
 
@@ -65,7 +65,7 @@ CINC_VERSON = ENV['CINC_VERSON'] || '15.3.14-1'
 knife[:bootstrap_install_command] = "wget http://downloads.cinc.sh/files/stable/cinc/ubuntu/16.04/cinc_#{CINC_VERSON}_amd64.deb && sudo dpkg -i cinc_#{CINC_VERSON}_amd64.deb"
 ```
 
-## cnic-clientのバージョンを変更する
+## cinc-clientのバージョンを変更する
 
 `knife ssh`で任意のパッケージを入れたらよいです。
 
