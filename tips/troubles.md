@@ -23,6 +23,14 @@ Probably, you have set the options that you do not use to configuration file (e.
 
 Please remove unused options from configuration by refering [https://knife-zero.github.io/40_configuration/](https://knife-zero.github.io/40_configuration/).
 
+## Unintended run list is applied during Converge
+
+There is probably a duplicate Node object.  
+For example, if there is a Node object that matches the host name of the remote server (FQDN that can be obtained by `hostname -f`), such as` nodes / localhost.json`, it may take precedence.
+
+In bootstrap, if you give specific name to manage with the `-N, --node-name NAME` option, the `node_name` attribute is written in `client.rb` on the remote server, so you can prevent it.
+
+- [client.rb — Chef Docs](https://docs.chef.io/config_rb_client.html)
 
 ## Private key error `ERROR: NotImplementedError: OpenSSH keys only supported if ED25519 is available`
 

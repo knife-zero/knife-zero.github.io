@@ -23,6 +23,16 @@ Knife-Zeroは通常ダミーのvalidation_keyを使用します。このメッ�
 
 [https://knife-zero.github.io/40_configuration-ja/](https://knife-zero.github.io/40_configuration-ja/) を参考に、不要なオプションを削除してみてください。
 
+
+## Convergeの際、意図しないランリストが適用される
+
+おそらく、重複するNodeオブジェクトが存在します。  
+例えば`nodes/localhost.json`など、リモートサーバのホスト名(`hostname -f`で取れるFQDN)が一致するNodeオブジェクトがある場合、そちらが優先されることがあります。
+
+bootstrapの時、`-N, --node-name NAME`オプションで任意の名前をつけておくと、リモートサーバの`client.rb`に`node_name`属性を記述するため、ある程度予防ができます。
+
+- [client.rb — Chef Docs](https://docs.chef.io/config_rb_client.html)
+
 ## 秘密鍵のエラー `ERROR: NotImplementedError: OpenSSH keys only supported if ED25519 is available` が出ます
 
 SSH接続用ライブラリ、net-sshではオプションとして対応形式を増やすことができるので、それを試してみてください。  
