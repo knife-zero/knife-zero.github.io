@@ -7,39 +7,36 @@ permalink: tips/use_cinc-client_instead-ja/
 
 Chef Infra Clientの初回実行時や、バージョンアップのたびにライセンスに同意するオプションを付けるのが面倒な場合、リモートノードではコミュニティビルドパッケージ版のCinc-Clientを使うこともできます。
 
-[https://gitlab.com/cinc-project/client](https://gitlab.com/cinc-project/client)
+[CINC](https://cinc-project.gitlab.io/)
 
-> この情報は2019年10月時点のもので、Cincパッケージプロジェクトは始まったばかりです。配布の方法など現状とちがっているかもしれません。
+> この情報は2019年12月時点のものです。
 
-`cinc-client`は`chef-client`からエントリーポイントと設定ディレクトリを`/etc/chef`から`/etc/cinc`に変更しただけのパッケージです。  
-そのため、下記2箇所をsymlinkでつないでしまえば、knife-zeroからみて全くおなじように扱うことができます。
+`cinc-client`は`chef-client`からデフォルトの設定ディレクトリを`/etc/chef`から`/etc/cinc`に変更しただけのパッケージです。  
+`chef-client` => `cinc-client`へのSymlinkも作成されます。
 
-- `/usr/bin/chef-client` => `/usr/bin/cinc-client`
-- `/etc/chef` => `/etc/cinc`
+そのため、下記のように設定ファイルへのパスを実行時に指定するだけで差し替えられるようになっています。
+
+- `chef-client --config /etc/chef/client.rb`
+
+または、`/etc/cinc => /etc/chef`をSymlinkにしてもよいでしょう。
 
 
 ## bootstrap時からcinc-clientを使用する場合
 
-bootstrapにはもともと便利なオプションが用意されているので、それを使うだけでcincをインストールすることができます。
+CINCはChefのomnibus-installer互換のインストールスクリプトを提供しています。
 
-パッケージは [http://downloads.cinc.sh](http://downloads.cinc.sh) で配布されています。
+[Download • CINC](https://cinc-project.gitlab.io/download/)
 
-- `--bootstrap-preinstall-command` でリンクを作成
-  - 例: `--bootstrap-preinstall-command "sudo ln -sf /usr/bin/cinc-client /usr/bin/chef-client && sudo mkdir -p /etc/cinc && sudo ln -sf /etc/cinc /etc/chef"`
-- `--bootstrap-install-command` でパッケージインストール
-  - 例: `--bootstrap-install-command "wget http://downloads.cinc.sh/files/stable/cinc/ubuntu/16.04/cinc_15.3.14-1_amd64.deb && sudo dpkg -i cinc_15.3.14-1_amd64.deb && rm -f cinc_15.3.14-1_amd64.deb"`
+knife-zero 2.2.0以降であれば、`--alter-project`オプションに`cinc`を渡せば自動でそちらを選択します。
 
-
-もともとのChef Infra Clientのようにディストリビューションを自動判定するインストーラーがまだ無いので、パッケージを自分で指定するとよいでしょう。
 
 以下はUbuntu 16.04のノードをbootstrapするサンプルです。
 
 ```shell
 $ knife zero bootstrap ${YOUR_NODE_IP} \
   --sudo \
-  -N my-ubuntu16 \
-  --bootstrap-preinstall-command "sudo ln -sf /usr/bin/cinc-client /usr/bin/chef-client && sudo mkdir -p /etc/cinc && sudo ln -sf /etc/cinc /etc/chef" \
-  --bootstrap-install-command "wget http://downloads.cinc.sh/files/stable/cinc/ubuntu/16.04/cinc_15.3.14-1_amd64.deb && sudo dpkg -i cinc_15.3.14-1_amd64.deb && rm -f cinc_15.3.14-1_amd64.deb"
+  --alter-project cinc \
+  -N my-ubuntu16
 ```
 
 問題なく適用できました。
@@ -57,21 +54,29 @@ Platform:    ubuntu 16.04
 Tags:        
 ```
 
-このbootstrap設定を設定ファイル(`knife.rb`や`config.rb`)に永続化する場合、次のように書いておくことができます。
+`alter-project`を設定ファイル(`knife.rb`や`config.rb`)に永続化する場合、次のように書いておくことができます。
 
 ```ruby
-knife[:bootstrap_preinstall_command] = 'sudo ln -sf /usr/bin/cinc-client /usr/bin/chef-client && sudo mkdir -p /etc/cinc && sudo ln -sf /etc/cinc /etc/chef'
-CINC_VERSON = ENV['CINC_VERSON'] || '15.3.14-1'
-knife[:bootstrap_install_command] = "wget http://downloads.cinc.sh/files/stable/cinc/ubuntu/16.04/cinc_#{CINC_VERSON}_amd64.deb && sudo dpkg -i cinc_#{CINC_VERSON}_amd64.deb"
+knife[:alter_project] = 'cinc'
 ```
 
 ## cinc-clientのバージョンを変更する
 
-`knife ssh`で任意のパッケージを入れたらよいです。
+`zero converge`でも同様に`--alter-project`オプションが使えます。
 
 ```shell
-$ knife ssh "name:my-ubuntu16" "wget http://downloads.cinc.sh/files/stable/cinc/ubuntu/16.04/cinc_15.3.14-1_amd64.deb && sudo dpkg -i cinc_15.3.14-1_amd64.deb && rm -f cinc_15.3.14-1_amd64.deb"
+$ knife zero converge 'name:my-ubuntu16' \
+  --client-version latest \
+  --alter-project cinc \
+  --sudo
 ```
+
+こちらもconfigに下記記述をしておけば省略可能です。
+
+```ruby
+knife[:alter_project] = 'cinc'
+```
+
 
 ## すでにChef Infra Clientが稼働しているノードをCincに入れ替える
 
@@ -83,28 +88,21 @@ $ knife ssh "name:my-ubuntu16" "sudo dpkg -r chef"
 xxx.xxx.xxx.xxx Removing chef (15.3.14-1) ...
 ```
 
-`/etc/chef`は残っているので、再利用しましょう。リンクの貼り方がbootstrapと少し違いますね。
-
-```
-$ knife ssh "name:my-ubuntu16" "sudo ln -sf /usr/bin/cinc-client /usr/bin/chef-client && sudo ln -sf /etc/chef /etc/cinc"
-```
-
-最後にバージョン変更とおなじように任意のパッケージを入れましょう
+After that, install cinc using `zero bootstrap` and` --alter-project`. At the time of replacement, it is safer to do `--no-converge`.
 
 ```shell
-$ knife ssh "name:my-ubuntu16" "wget -nv http://downloads.cinc.sh/files/stable/cinc/ubuntu/16.04/cinc_15.3.14-1_amd64.deb && sudo dpkg -i cinc_15.3.14-1_amd64.deb && rm -f cinc_15.3.14-1_amd64.deb"
-
-...
-
-xxx.xxx.xxx.xxx Thank you for installing cinc, the community build based on Chef!
+$ knife zero bootstrap ${YOUR_NODE_IP} \
+  --sudo \
+  --alter-project cinc \
+  -N my-ubuntu16 \
+  --no-converge
 ```
 
-動作確認のため、`knife zero converge`をしてみましょう。
-
+Let's try `knife zero converge` again to check the operation.
 
 ```shell
 $ knife zero converge "name:my-ubuntu16"
-xxx.xxx.xxx.xxx Starting Cinc Client, version 15.3.14
+xxx.xxx.xxx.xxx Starting Cinc Client, version 15.5.1
 
 ...
 
