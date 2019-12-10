@@ -52,7 +52,9 @@ Knife-Zeroで追加したオプションと、よく聞かれるオプション�
 - `--[no-]overwrite`
     - 既に同名のノードオブジェクトが存在する場合、強制上書きするかを指定します。
     - デフォルトはfalseで、上書きするかどうかを訪ねます。
-
+- `--alter-project PROJECT`
+    - リモートノードで使用するChef Infra Client互換のプロジェクト名です。
+    - `chef`, `cinc` の2つから選択。
 
 その他については`knife zero bootstrap --help`を参照してください。
 
@@ -158,6 +160,9 @@ Knife-Zeroで追加したオプションと、よく聞かれるオプション�
     - `--client-version` オプションと併用します。
     - ACCEPTANCE は 'accept', 'accept-no-persist', または 'accept-silent' から選択。
     - リモートのChef Infra Client を、15以降のバージョンに更新する際に使用します。
+- `--alter-project PROJECT`
+    - リモートノードで使用するChef Infra Client互換のプロジェクト名です。
+    - `chef`, `cinc` の2つから選択。
 
 ### Examples
 

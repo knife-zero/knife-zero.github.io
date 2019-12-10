@@ -42,7 +42,9 @@ And options that you added in Knife-Zero, frequently asked option is is as follo
     - Add the contents of the specified file to `client.rb` of the remote node.
 - `--[no-]overwrite`
     - Overwrite local node object if node already exist. false (ask) by default
-
+- `--alter-project PROJECT`
+    - The Chef Infra Client compatible project name used on the remote node.
+    - Choose from `chef` or `cinc`.
 
 Please refer to the `knife zero bootstrap --help` for the other.
 
@@ -144,6 +146,9 @@ And options that we added in Knife-Zero, frequently asked option is as follows.
     - Used with the `--client-version` option.
     - ACCEPTANCE is selected from '`accept`', '`accept-no-persist`', or '`accept-silent`'.
     - Use to update the remote Chef Infra Client to version 15 or later.
+- `--alter-project PROJECT`
+    - The Chef Infra Client compatible project name used on the remote node.
+    - Choose from `chef` or `cinc`.
 
 
 ### Examples
