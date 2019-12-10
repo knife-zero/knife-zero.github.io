@@ -26,8 +26,7 @@ CINC provides Chef's omnibus-installer compatible installation script.
 
 [Download • CINC](https://cinc-project.gitlab.io/download/)
 
-knife-zero 2.2.0以降であれば、`--alter-project`オプションに`cinc`を渡せば自動でそちらを選択します。
-
+After that, install cinc using `zero bootstrap` and` --alter-project`. At the time of replacement, it is safer to do `--no-converge`.
 
 The following is a sample to bootstrap an Ubuntu 16.04 node.
 

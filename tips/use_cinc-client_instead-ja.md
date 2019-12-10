@@ -88,7 +88,7 @@ $ knife ssh "name:my-ubuntu16" "sudo dpkg -r chef"
 xxx.xxx.xxx.xxx Removing chef (15.3.14-1) ...
 ```
 
-After that, install cinc using `zero bootstrap` and` --alter-project`. At the time of replacement, it is safer to do `--no-converge`.
+knife-zero 2.2.0以降であれば、`--alter-project`オプションに`cinc`を渡せば自動でそちらを選択します。
 
 ```shell
 $ knife zero bootstrap ${YOUR_NODE_IP} \
