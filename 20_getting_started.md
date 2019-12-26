@@ -58,6 +58,8 @@ knife[:automatic_attribute_whitelist] = %w[
 
 Bootstrapping development server. Unless otherwise stated, all commands have been running on the workstation.
 
+> If you going to using version 15.x on the Chef Infra Client on the remote node, add the `--chef-license accept` option.
+
 ```
 $ knife zero bootstrap 153.120.97.132 --ssh-user ubuntu
 
