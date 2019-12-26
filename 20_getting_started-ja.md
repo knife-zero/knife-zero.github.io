@@ -61,6 +61,8 @@ knife[:automatic_attribute_whitelist] = %w[
 
 とりあえず開発用サーバにBootstrapを実行します。特に記述がなければ、各操作はKnife-Zeroをインストールしたローカルのコンピュータ(Workstation)で実行します。
 
+> リモートノードのChef Infra Clientで、バージョン15.xを使用する場合は、 `--chef-license accept` オプションを追加してください。
+
 ```
 $ knife zero bootstrap 153.120.97.132 --ssh-user ubuntu
 
