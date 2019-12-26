@@ -15,7 +15,7 @@ Knife-Zero is plugin for [Chef](https://www.chef.io/).
     - except enterprise addons.
 - You have only to manage one chef-repo.
 - Windows Server(Target) is not supported.
-- [Cinc-Client](cinc-project.gitlab.io) can be installed on the remote node.
+- [Cinc-Client](https://cinc-project.gitlab.io) can be installed on the remote node.
 
 ## Development status of Knife-Zero
 

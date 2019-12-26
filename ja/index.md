@@ -13,7 +13,7 @@ Knife-Zeroは[Chef](https://www.chef.io/)のプラグインです。特徴はだ
 - Chef-Server/Client環境の機能をつかえます。
     - ただしenterprise addonは除きます。
 - Windows Serverは管理対象にできません。
-- リモートノードでは[Cinc-Client](cinc-project.gitlab.io)を選択可能です。
+- リモートノードでは[Cinc-Client](https://cinc-project.gitlab.io)を選択可能です。
 
 ## はじめに
 
