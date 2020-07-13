@@ -40,7 +40,11 @@ knife[:automatic_attribute_whitelist] = %w[
 # knife[:normal_attribute_whitelist] = []
 # knife[:override_attribute_whitelist] = []
 ```
+## Knife specific configuration for `knife.rb`
 
+You can use any optional options from knife itself to configure the bootstrapping template, chefs client version, and more:
+
+Further reading at: https://docs.chef.io/workstation/config_rb/#optional-settings
 
 ## Knife-Zero specific configuration for `knife.rb`
 
