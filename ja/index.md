@@ -78,7 +78,7 @@ Knife-Zeroの使い方はほとんどChef-Server/Client環境の管理と変わ�
 
 ### Nodeオブジェクトも含めてバージョン管理
 
-NodeオブジェクトもGit等で管理したければ、WhiteListを使うとよいでしょう。詳しくはTipsに書いておきます。
+NodeオブジェクトもGit等で管理したければ、AllowedListを使うとよいでしょう。詳しくはTipsに書いておきます。
 
 
 ## どのツールをつかえばいいのか

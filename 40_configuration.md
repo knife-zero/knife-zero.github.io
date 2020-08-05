@@ -39,6 +39,11 @@ knife[:automatic_attribute_whitelist] = %w[
 # knife[:default_attribute_whitelist] = []
 # knife[:normal_attribute_whitelist] = []
 # knife[:override_attribute_whitelist] = []
+
+## Use `allowd_*` for Chef Infra Client 16.3 or later
+# knife[:allowed_default_attributes] = []
+# knife[:allowed_normal_attributes] = []
+# knife[:allowed_override_attributes] = []
 ```
 
 

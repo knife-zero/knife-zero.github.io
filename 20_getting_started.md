@@ -275,8 +275,6 @@ $ knife zero converge "name:*" --ssh-user ubuntu
 153.120.97.132 Compiling Cookbooks...
 153.120.97.132 WARN: Node develop-server has an empty run list.
 153.120.97.132 Converging 0 resources
-153.120.97.132 WARN: Could not find whitelist attribute fqdn/.
-153.120.97.132 WARN: Could not find whitelist attribute cloud/.
 153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
@@ -286,8 +284,6 @@ $ knife zero converge "name:*" --ssh-user ubuntu
 153.120.97.133 Compiling Cookbooks...
 153.120.97.133 WARN: Node production-server has an empty run list.
 153.120.97.133 Converging 0 resources
-153.120.97.133 WARN: Could not find whitelist attribute fqdn/.
-153.120.97.133 WARN: Could not find whitelist attribute cloud/.
 153.120.97.133
 153.120.97.133 Running handlers:
 153.120.97.133 Running handlers complete
@@ -408,8 +404,6 @@ $ knife zero converge "name:develop-server" -x ubuntu
 153.120.97.132 Converging 1 resources
 153.120.97.132 Recipe: create_file::default
 153.120.97.132   * file[/tmp/myenvironment] action create (up to date)
-153.120.97.132 WARN: Could not find whitelist attribute fqdn/.
-153.120.97.132 WARN: Could not find whitelist attribute cloud/.
 153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
@@ -500,8 +494,6 @@ $ knife zero converge "chef_environment:*" -x ubuntu
 153.120.97.132     @@ -1,2 +1,2 @@
 153.120.97.132     -_default
 153.120.97.132     +development
-153.120.97.132 WARN: Could not find whitelist attribute fqdn/.
-153.120.97.132 WARN: Could not find whitelist attribute cloud/.
 153.120.97.132
 153.120.97.132 Running handlers:
 153.120.97.132 Running handlers complete
@@ -519,8 +511,6 @@ $ knife zero converge "chef_environment:*" -x ubuntu
 153.120.97.133     +++ /tmp/.myenvironment20151006-17291-rpkr7j	2015-xx-xx xx:xx:xx.291539816 +0900
 153.120.97.133     @@ -1 +1,2 @@
 153.120.97.133     +production
-153.120.97.133 WARN: Could not find whitelist attribute fqdn/.
-153.120.97.133 WARN: Could not find whitelist attribute cloud/.
 153.120.97.133
 153.120.97.133 Running handlers:
 153.120.97.133 Running handlers complete
