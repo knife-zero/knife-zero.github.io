@@ -106,7 +106,7 @@ log_level :error
 $ knife zero bootstrap --appendix-config ./append.rb ...(other options)
 ```
 
-`knfie.rb`に記述する場合は、`knife[:appendix_config]`です。
+`knife.rb`に記述する場合は、`knife[:appendix_config]`です。
 
 こちらはファイルパスでなく、コンテンツそのものを指定します。
 

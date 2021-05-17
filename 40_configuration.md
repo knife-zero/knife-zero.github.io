@@ -116,7 +116,7 @@ Executing bootstrap as follows adds the contents of `append.rb` at the end of `c
 $ knife zero bootstrap --appendix-config ./append.rb ...(other options)
 ```
 
-To set in `knfie.rb`, use `knife [:appendix_config]`.
+To set in `knife.rb`, use `knife [:appendix_config]`.
 
 This is not the file path, but specify the content itself.
 ```
