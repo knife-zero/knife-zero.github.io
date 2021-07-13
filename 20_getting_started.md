@@ -34,6 +34,7 @@ knife[:use_sudo] = true
 
 ## use specific key file to connect server instead of ssh_agent(use ssh_agent is set true by default).
 # knife[:identity_file] = "~/.ssh/id_rsa"
+# knife[:ssh_identity_file] = 'PATH_TO_YOUR_PRIVATE_KEY'  # Newer than Chef 14
 
 ## Attributes of node objects will be saved to json file.
 ## the automatic_attribute_whitelist option limits the attributes to be saved.

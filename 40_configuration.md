@@ -16,6 +16,7 @@ cookbook_path    [ File.expand_path('../cookbooks' , __FILE__), File.expand_path
 knife[:ssh_attribute] = "knife_zero.host"
 knife[:use_sudo] = true
 knife[:identity_file] = "PATH_TO_YOUR_PRIVATE_KEY"
+# knife[:ssh_identity_file] = 'PATH_TO_YOUR_PRIVATE_KEY'  # Newer than Chef 14
 
 knife[:automatic_attribute_whitelist] = %w[
   fqdn

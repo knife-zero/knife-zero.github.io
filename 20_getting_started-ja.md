@@ -36,6 +36,7 @@ knife[:use_sudo] = true
 
 ## SSHエージェントを使ってないなら、SSHログイン用の鍵へのファイルパスを指定しましょう。
 # knife[:identity_file] = "~/.ssh/id_rsa"
+# knife[:ssh_identity_file] = 'PATH_TO_YOUR_PRIVATE_KEY'  # Newer than Chef 14
 
 ## Nodeの各種属性(attributes)はローカルにJSONファイルとして保存されていきます。
 ## automatic_attribute_whitelist オプションは、Nodeから収集したAttributeのうち、保存する対象を絞ることができます。
